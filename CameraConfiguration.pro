@@ -18,9 +18,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         caliobration_group.cpp \
+        detector_group.cpp \
         dre_or_ago_group.cpp \
+        engineering_group.cpp \
+        filters_group.cpp \
+        graphics_group.cpp \
+        imager_configuration_group.cpp \
+        lens_group.cpp \
         main.cpp \
-        serial.cpp
+        serial.cpp \
+        status_group.cpp \
+        tracker_group.cpp \
+        user_interface_group.cpp \
+        video_group.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
