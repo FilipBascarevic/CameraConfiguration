@@ -1,3 +1,12 @@
+/** engineering_group.cpp
+ *
+ * Implemented all messages in Engineering Message Group.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include "camera_config.h"
 
 /* Use Peltier During Calibration Normal Calibration Engineering Calibration (external reference)
@@ -136,7 +145,78 @@ int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value)
 
 }
 
-// IMPORTANT : QUESTION TO AHMED !!!
+/* TEC Stable (engineering calibration)
+     *
+     * @param dir direction can be SET and ENG. READ mode isn't acceptable
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+*/
+int SLX_III_class::TEC_Stable(DIRECTION dir)
+{
+    qint64 numRead, numWrite;
+    char buff_send[6], buff_receive[6];
+    QTextStream out(stdout);
+
+
+    // Make valid message
+    buff_send[0] = '<';
+    buff_send[2] = 'E';
+    buff_send[3] = 'R';
+    buff_send[4] = 'S';
+    if(dir == READ) {
+        out << "READ mode of transfer isn't acceptible for TEC Stable!!!" << endl;
+        return -1;
+    }
+    else if (dir == SET){
+        buff_send[1] = 'S';
+        buff_send[5] = '>';
+
+        // Send it via Serial port
+        numWrite = write(buff_send, 6);
+        // Check do we receive 6 characters
+        if (numWrite != 6) {
+            out << "Message isn't send successfully in SET mode" << endl;
+            return -1;
+        }
+        // Wait response
+        numRead = read(buff_receive, 6);
+
+        // Check do we receive 6 characters
+        if (numRead == 6) {
+            // Check response
+            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+                return -1;
+            }
+
+        }
+        else {
+            out << "Message isn't receive successfully in SET mode" << endl;
+            return -1;
+        }
+    }
+    else {
+
+        // Do Set operation
+        buff_send[1] = 'S';
+        buff_send[5] = '>';
+
+        // Send it via Serial port
+        numWrite = write(buff_send, 6);
+        // Check do we receive 6 characters
+        if (numWrite != 6) {
+            out << "Message isn't send successfully in ENG mode" << endl;
+            return -1;
+        }
+
+        // Because this message doen't accept READ, we can't check what we
+        // SET. Only what we can do is to check does 6 caracters is send via UART
+
+
+    }
+
+    return 0;
+
+}
 
 /* Move Paddle
      *
@@ -206,38 +286,8 @@ int SLX_III_class::Move_Paddle(DIRECTION dir, char *value)
             return -1;
         }
 
-        // Do not wait response. Instead do READ to check does value
-        // SET correctly
-        char var_buff_send[6];
-        var_buff_send[0] = '<';
-        var_buff_send[1] = 'R';
-        var_buff_send[2] = 'E';
-        var_buff_send[3] = 'R';
-        var_buff_send[4] = 'P';
-        var_buff_send[5] = '>';
-
-        // Do READ to check SET operation
-        // Send it via Serial port
-        qint64 numWrite_var = write(var_buff_send, 6);
-        // Check do we receive 6 characters
-        if (numWrite_var != 6) {
-            out << "Message isn't send successfully in READ mode" << endl;
-            return -1;
-        }
-        // Wait response
-        numRead = read(buff_receive, 7);
-        // Check do we receive 7 characters
-        if (numRead == 7) {
-            // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
-                return -1;
-            }
-
-        }
-        else {
-            out << "Message isn't receive successfully in SET mode" << endl;
-            return -1;
-        }
+        // Because this message doen't accept READ, we can't check what we
+        // SET. Only what we can do is to check does 6 caracters is send via UART
 
 
     }

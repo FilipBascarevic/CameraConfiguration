@@ -1,3 +1,12 @@
+/** calibration_group.cpp
+ *
+ * Implemented all messages in Calibration Message Group.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include <camera_config.h>
 
 /* Perform Calibration
@@ -1471,39 +1480,8 @@ int SLX_III_class::Store_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
             return -1;
         }
 
-        // Do not wait response. Instead do READ to check does value
-        // SET correctly
-        char var_buff_send[6];
-        var_buff_send[0] = '<';
-        var_buff_send[1] = 'R';
-        var_buff_send[2] = 'C';
-        var_buff_send[3] = 'C';
-        var_buff_send[4] = 'S';
-        var_buff_send[5] = '>';
-
-        // Do READ to check SET operation
-        // Send it via Serial port
-        qint64 numWrite_var = write(var_buff_send, 6);
-        // Check do we receive 6 characters
-        if (numWrite_var != 6) {
-            out << "Message isn't send successfully in READ mode" << endl;
-            return -1;
-        }
-        // Wait response
-        numRead = read(buff_receive, 7);
-        // Check do we receive 7 characters
-        if (numRead == 7) {
-            // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
-                return -1;
-            }
-
-        }
-        else {
-            out << "Message isn't receive successfully in SET mode" << endl;
-            return -1;
-        }
-
+        // Because this message doen't accept READ, we can't check what we
+        // SET. Only what we can do is to check does 6 caracters is send via UART
 
     }
 
@@ -1577,39 +1555,8 @@ int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
             return -1;
         }
 
-        // Do not wait response. Instead do READ to check does value
-        // SET correctly
-        char var_buff_send[6];
-        var_buff_send[0] = '<';
-        var_buff_send[1] = 'R';
-        var_buff_send[2] = 'C';
-        var_buff_send[3] = 'C';
-        var_buff_send[4] = 'R';
-        var_buff_send[5] = '>';
-
-        // Do READ to check SET operation
-        // Send it via Serial port
-        qint64 numWrite_var = write(var_buff_send, 6);
-        // Check do we receive 6 characters
-        if (numWrite_var != 6) {
-            out << "Message isn't send successfully in READ mode" << endl;
-            return -1;
-        }
-        // Wait response
-        numRead = read(buff_receive, 7);
-        // Check do we receive 7 characters
-        if (numRead == 7) {
-            // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
-                return -1;
-            }
-
-        }
-        else {
-            out << "Message isn't receive successfully in SET mode" << endl;
-            return -1;
-        }
-
+        // Because this message doen't accept READ, we can't check what we
+        // SET. Only what we can do is to check does 6 caracters is send via UART
 
     }
 

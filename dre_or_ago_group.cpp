@@ -1,7 +1,14 @@
+/** dre_or_ago_group.cpp
+ *
+ * Implemented all messages in DRE/AGO Message Group.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include <camera_config.h>
 #include <QtMath>
-
-
 
 int SLX_III_class::check_responce_READ(char *buff_send, int buff_send_len, char *buff_receive, int buff_receive_len, char *value, int valLen)
 {

@@ -1,3 +1,13 @@
+/** camera_config.h
+ *
+ * This class contains all configuration messages for SLX III Thermal Camera.
+ * For configuration of this camera, RS422 serial interface is used.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #ifndef CAMERA_CONFIG_H
 #define CAMERA_CONFIG_H
 
@@ -570,7 +580,13 @@ public :
      */
      int Use_Peltier_During_Calibration(DIRECTION dir, int *value);
 
-     // IMPORTANT : QUESTION TO AHMED !!!
+     /* TEC Stable (engineering calibration)
+     *
+     * @param dir direction can be SET and ENG. READ mode isn't acceptable
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int TEC_Stable(DIRECTION dir);
 
      /* Move Paddle
      *

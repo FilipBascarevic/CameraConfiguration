@@ -1,3 +1,12 @@
+/** imager_configuration_group.cpp
+ *
+ * Implemented all messages in Imager Configuration Message Group.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include "camera_config.h"
 
 /* Imager Identity (part 1)

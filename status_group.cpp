@@ -1,3 +1,12 @@
+/** status_group.cpp
+ *
+ * Implemented all messages in Status Message Group.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include "camera_config.h"
 
 /* Camera Mode

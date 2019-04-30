@@ -1,3 +1,13 @@
+/** Serial.h
+ *
+ * A very simple serial port control class. This calss contains opening/closing serial port.
+ * Reading / Writing form/to serial port. Flush for flushing serial port.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #ifndef SERIAL_H
 #define SERIAL_H
 

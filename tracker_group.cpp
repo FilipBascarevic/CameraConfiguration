@@ -1,3 +1,12 @@
+/** tracker_group.cpp
+ *
+ * Implemented all messages in Tracker Message Group.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include "camera_config.h"
 
 /* Tracker Mode

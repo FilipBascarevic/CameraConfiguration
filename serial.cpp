@@ -1,3 +1,12 @@
+/** Serial.cpp
+ *
+ * A very simple serial port control class. Implementation of all methods from this class.
+ *
+ * @author Filip Bascarevic
+ *
+ * @version 0.1 -- 30 April 2019
+ */
+
 #include"serial.h"
 
 
