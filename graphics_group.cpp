@@ -3712,6 +3712,95 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
 
 }
 
+/* Text Item Value (LSB = 0.1)
+     *
+     * @param dir direction can be SET and READ. ENG mode isn't acceptable
+     * @param/return value pointer can be -900 to 900
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+*/
+int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
+{
+    qint64 numRead, numWrite;
+    char buff_send[11], buff_receive[11];
+    QTextStream out(stdout);
+
+
+    // Make valid message
+    buff_send[0] = '<';
+    buff_send[2] = 'G';
+    buff_send[3] = 'P';
+    buff_send[4] = 'P';
+    buff_send[5] = 'V';
+    if(dir == READ) {
+        buff_send[1] = 'R';
+        buff_send[6] = '>';
+
+        // Send it via Serial port
+        numWrite = write(buff_send, 7);
+        // Check do we receive 7 characters
+        if (numWrite != 7) {
+            out << "Message isn't send successfully in READ mode" << endl;
+            return -1;
+        }
+        // Wait response
+        numRead = read(buff_receive, 11);
+
+        // Check do we receive 11 characters
+        if (numRead == 11) {
+            char *val_buff = new char [numWrite - numRead];
+            // Check response
+            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+                return -1;
+            }
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+        }
+        else {
+            out << "Message isn't receive successfully in READ mode" << endl;
+            return -1;
+        }
+    }
+    else if (dir == SET){
+        buff_send[1] = 'S';
+        convert_number_to_char_array(*value, &buff_send[6],3, true);
+        buff_send[10] = '>';
+
+        // Send it via Serial port
+        numWrite = write(buff_send, 11);
+        // Check do we receive 11 characters
+        if (numWrite != 11) {
+            out << "Message isn't send successfully in SET mode" << endl;
+            return -1;
+        }
+        // Wait response
+        numRead = read(buff_receive, 11);
+
+        // Check do we receive 11 characters
+        if (numRead == 11) {
+            // Check response
+            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+                return -1;
+            }
+
+        }
+        else {
+            out << "Message isn't receive successfully in SET mode" << endl;
+            return -1;
+        }
+    }
+    else {
+        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        return -1;
+    }
+
+    return 0;
+
+}
+
 /* ----------------------------------------------------------------------------------------*/
 
 /* Text Item Enable
@@ -6189,7 +6278,7 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6278,7 +6367,7 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }

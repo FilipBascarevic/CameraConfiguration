@@ -8,6 +8,7 @@
  */
 
 #include "camera_config.h"
+#include <QThread>
 
 /* Configure RS422 Communications Baud Rate
      *
@@ -70,6 +71,11 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
         convert_number_to_char_array(*value, &buff_send[5],1, false);
         buff_send[6] = '>';
 
+        // Before sending new configuration of BAUD RATE, remember
+        // value of No. of Power Cycle
+        int power_cycle = 0, power_cycle_old = 0;
+        Number_of_Power_Cycles(READ, &power_cycle_old);
+
         // Send it via Serial port
         numWrite = write(buff_send, 7);
         // Check do we receive 7 characters
@@ -93,18 +99,36 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
             return -1;
         }
 
-        // Update UART protocol on a host
-        switch (*value) {
-            case 0 : break;
-            case 1 : break;
-            case 2 : break;
-            case 3 : break;
-            case 4 : break;
-            default :
-                    out << "Unknown Parity and Stop Bits" << endl;
-                    break;
+        // Wait some time, because restart is a process and it
+        // it can't finished immediately
+        QThread::sleep(30);
+
+        // Read No of Power Cycle again and compare it with
+        // previous value. If it is different, it means that camera
+        // is restarted and new UART configuration is set
+        Number_of_Power_Cycles(READ, &power_cycle);
+
+        if (power_cycle != power_cycle_old) {
+            // Close serial port
+
+            // Update UART protocol on a host
+            switch (*value) {
+                case 0 :
+                        //serialPort.setBaudRate(QSerialPort::Baud9600);
+                        BaudRate = QSerialPort::Baud9600;
+                        break;
+                case 1 : break;
+                case 2 : break;
+                case 3 : break;
+                case 4 : break;
+                default :
+                        out << "Unknown Parity and Stop Bits" << endl;
+                        break;
+
+            }
 
         }
+
     }
     else {
 

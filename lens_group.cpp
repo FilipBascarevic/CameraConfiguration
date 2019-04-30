@@ -359,7 +359,7 @@ int SLX_III_class::Focus_Position(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -687,9 +687,15 @@ int SLX_III_class::Optimise_Focus_Distance(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[5],1, false);
-        buff_send[6] = '>';
+        if (*value == 0) {
+            out << "Value 0 can't be set in SET mode. Only possible value can be 1" << endl;
+        }
+        else {
+            buff_send[1] = 'S';
+            convert_number_to_char_array(*value, &buff_send[5],1, false);
+            buff_send[6] = '>';
+        }
+
 
         // Send it via Serial port
         numWrite = write(buff_send, 7);
@@ -765,7 +771,7 @@ int SLX_III_class::Autofocus_Nearest_Position(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -854,7 +860,7 @@ int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1098,7 +1104,78 @@ int SLX_III_class::Humidity_Sensor(DIRECTION dir, int *value)
 
 }
 
-// ASK AHMED
+/* Lens BITE
+     *              D0 : 0 = Ok, 1= Initialising (warning only)
+     *              D1 : 0 = Ok, 1 = Communications Error
+     *              D2 : 0 = Ok, 1 = NVRAM Datum Error
+     *              D3 : 0 = Ok, 1 = NVRAM Calibration Temp Error
+     *              D4 : 0 = Ok, 1 = Zoom Position Sensor Error
+     *              D5 : 0 = Ok, 1 = Focus Position Sensor Error
+     *              D6 : 0 = Ok, 1 = Focus Optocouple Error
+     *              D7 : 0 = Ok, 1 = Exercise Function Timeout
+     *
+     * @param dir direction can be READ. SET or ENG mode aren't acceptable
+     * @param/return value pointer can be 0 to 255
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+*/
+
+int SLX_III_class::Lens_BITE(DIRECTION dir, int *value)
+{
+    qint64 numRead, numWrite;
+    char buff_send[9], buff_receive[9];
+    QTextStream out(stdout);
+
+
+    // Make valid message
+    buff_send[0] = '<';
+    buff_send[1] = 'R';
+    buff_send[2] = 'L';
+    buff_send[3] = 'S';
+    buff_send[4] = 'B';
+    buff_send[5] = '>';
+    if(dir == READ) {
+
+        // Send it via Serial port
+        numWrite = write(buff_send, 6);
+        // Check do we receive 6 characters
+        if (numWrite != 6) {
+            out << "Message isn't send successfully in READ mode" << endl;
+            return -1;
+        }
+        // Wait response
+        numRead = read(buff_receive, 9);
+
+        // Check do we receive 9 characters
+        if (numRead == 9) {
+            char *val_buff = new char [numWrite - numRead];
+            // Check response
+            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+                return -1;
+            }
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+        }
+        else {
+            out << "Message isn't receive successfully in READ mode" << endl;
+            return -1;
+        }
+    }
+    else if (dir == SET){
+        out << "SET mode of transfer isn't acceptible for Humidity Sensor!!!" << endl;
+        return -1;
+    }
+    else {
+        out << "ENG mode of transfer isn't acceptible for Humidity Sensor!!!" << endl;
+        return -1;
+    }
+
+    return 0;
+
+}
 
 /* ----------------------------------------------------------------------------------------*/
 
@@ -1274,7 +1351,7 @@ int SLX_III_class::Focus_Far_Hard_Stop_Datum(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1339,7 +1416,7 @@ int SLX_III_class::Focus_Near_Hard_Stop_Datum(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1404,7 +1481,7 @@ int SLX_III_class::Focus_Optocouple_Sensor_Datum(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1534,7 +1611,7 @@ int SLX_III_class::Focus_Optical_Reference_Datum(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1601,7 +1678,7 @@ int SLX_III_class::Lens_Local_Board_Temperature(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1666,7 +1743,7 @@ int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1731,7 +1808,7 @@ int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1796,7 +1873,7 @@ int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1861,7 +1938,7 @@ int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1926,7 +2003,7 @@ int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1991,7 +2068,7 @@ int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2056,7 +2133,7 @@ int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2121,7 +2198,7 @@ int SLX_III_class::Lens_Temperature_Sensor_8(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2189,7 +2266,7 @@ int SLX_III_class::Lens_Calibration_Temperature_1(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2255,7 +2332,7 @@ int SLX_III_class::Lens_Calibration_Temperature_2(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2321,7 +2398,7 @@ int SLX_III_class::Lens_Calibration_Temperature_3(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2387,7 +2464,7 @@ int SLX_III_class::Lens_Calibration_Temperature_4(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2453,7 +2530,7 @@ int SLX_III_class::Lens_Calibration_Temperature_5(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2519,7 +2596,7 @@ int SLX_III_class::Lens_Calibration_Temperature_6(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2585,7 +2662,7 @@ int SLX_III_class::Lens_Calibration_Temperature_7(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2651,7 +2728,7 @@ int SLX_III_class::Lens_Calibration_Temperature_8(DIRECTION dir, int *value)
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }

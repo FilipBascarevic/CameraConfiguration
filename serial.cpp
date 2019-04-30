@@ -9,8 +9,20 @@
 
 #include"serial.h"
 
+Serial::~Serial()
+{
+    // close serial port
+    close();
 
-Serial::Serial(QString serialPortName, QSerialPort::BaudRate serialPortBaudRate, QSerialPort::StopBits serialPortStopBits,
+    BaudRate = QSerialPort::Baud9600;
+    DataBits = QSerialPort::Data8;
+    StopBits = QSerialPort::OneStop;
+    Parity   = QSerialPort::NoParity;
+
+}
+
+
+bool Serial::open(QString serialPortName, QSerialPort::BaudRate serialPortBaudRate, QSerialPort::DataBits serialPortDataBits, QSerialPort::StopBits serialPortStopBits,
     QSerialPort::Parity serialPortParity)
 {
 
@@ -21,6 +33,8 @@ Serial::Serial(QString serialPortName, QSerialPort::BaudRate serialPortBaudRate,
     serialPort.setPortName(serialPortName);
     // Set a BaudRate of serial port
     serialPort.setBaudRate(serialPortBaudRate);
+    // Set a DataBits of serial port
+    serialPort.setDataBits(serialPortDataBits);
     // Set a StopBits of serial port
     serialPort.setStopBits(serialPortStopBits);
     // Set a Parity of serial port
@@ -32,12 +46,21 @@ Serial::Serial(QString serialPortName, QSerialPort::BaudRate serialPortBaudRate,
                           .arg(serialPortName).arg(serialPort.error()) << endl;
         // Close port if it wasn't open correctly
         this -> ~Serial();
+        return false;
+    }
+    else {
+        BaudRate = serialPortBaudRate;
+        DataBits = serialPortDataBits;
+        StopBits = serialPortStopBits;
+        Parity   = serialPortParity;
+
+        return true;
     }
 
 
 }
 
-Serial::~Serial()
+void Serial::close()
 {
 
     // close serial port

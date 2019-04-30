@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         caliobration_group.cpp \
+        camera_config.cpp \
         detector_group.cpp \
         dre_or_ago_group.cpp \
         engineering_group.cpp \

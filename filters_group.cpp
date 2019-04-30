@@ -603,7 +603,7 @@ int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value)
 int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *value)
 {
     qint64 numRead, numWrite;
-    char buff_send[9], buff_receive[9];
+    char buff_send[10], buff_receive[10];
     QTextStream out(stdout);
 
 
@@ -625,17 +625,17 @@ int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 10);
 
-        // Check do we receive 9 characters
-        if (numRead == 9) {
+        // Check do we receive 10 characters
+        if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
             if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -668,7 +668,7 @@ int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *va
 int SLX_III_class::Image_Stabilisation_Current_Position_Y(DIRECTION dir, int *value)
 {
     qint64 numRead, numWrite;
-    char buff_send[9], buff_receive[9];
+    char buff_send[10], buff_receive[10];
     QTextStream out(stdout);
 
 
@@ -690,17 +690,17 @@ int SLX_III_class::Image_Stabilisation_Current_Position_Y(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 10);
 
-        // Check do we receive 9 characters
-        if (numRead == 9) {
+        // Check do we receive 10 characters
+        if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
             if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }

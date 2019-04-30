@@ -16,9 +16,10 @@
 /* Derived class from class Serial. Here ios implemented all configuration methods
  * using Serial protocol. User should find which function he/she need and call it.
  */
-class SLX_III_class : Serial {
+class SLX_III_class : public Serial {
 
-private :
+//private :
+public:
 
     int check_responce_READ (char *buff_send, int buff_send_len, char *buff_receive, int buff_receive_len, char *value, int valLen);
 
@@ -1141,6 +1142,15 @@ public :
      */
      int Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value);
 
+     /* Text Item Value (LSB = 0.1)
+     *
+     * @param dir direction can be SET and READ. ENG mode isn't acceptable
+     * @param/return value pointer can be -900 to 900
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value);
+
      /* ----------------------------------------------------------------------------------------*/
 
      /* Pre-defined Text : Status <GPS> */
@@ -1488,6 +1498,133 @@ public :
      */
      int Imager_Identity_Part_1(DIRECTION dir, int *value);
 
+     /* Imager Identity (part 2)
+     *              ‘Y’ and ‘Z’ parts of identity : AP5???XXXX-YY-ZZ
+     *
+     * @param dir direction can be READ and ENG. SET mode isn't acceptable
+     * @param/return value pointer can be 0 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Imager_Identity_Part_2(DIRECTION dir, int *value);
+
+     /* Firmware Version (processor module)
+     *              +ve values = Formal Builds
+     *              -ve values = Engineering Builds
+     *
+     * @param dir direction can be READ. ENG and SET mode aren't acceptable
+     * @param/return value pointer can be -9999 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Firmware_Version(DIRECTION dir, int *value);
+
+     /* Imager Serial Number
+     *
+     * @param dir direction can be READ and ENG. SET mode isn't acceptable
+     * @param/return value pointer can be 1 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Imager_Serial_Number(DIRECTION dir, int *value);
+
+     /* Processing Board Serial Number
+     *
+     * @param dir direction can be READ and ENG. SET mode isn't acceptable
+     * @param/return value pointer can be 1 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Processing_Board_Serial_Number(DIRECTION dir, int *value);
+
+     /* Lens Board Serial Number
+     *
+     * @param dir direction can be READ. ENG and SET modes aren't acceptable
+     * @param/return value pointer can be 1 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Lens_Board_Serial_Number(DIRECTION dir, int *value);
+
+     /* Turbulence Mitigation Available
+     *
+     * @param dir direction can be READ. ENG and SET modes aren't acceptable
+     * @param/return value pointer can be:
+     *                  * 0 - No
+     *                  * 1 - Yes
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Turbulence_Mitigation_Available(DIRECTION dir, int *value);
+
+     /* Detector Waveband 1
+     *
+     * @param dir direction can be READ. ENG and SET modes aren't acceptable
+     * @param/return value pointer can be:
+     *                  * M - Midwave (3-5um)
+     *                  * L - Longwave (8-12um)
+     *                  * B - BIL
+     *                  * 3 - 3D BIL
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Detector_Waveband_1(DIRECTION dir, char *value);
+
+     /* Default Configuration
+     *
+     * @param dir direction can be ENG. READ and SET modes aren't acceptable
+     * @param/return value pointer can be:
+     *                  * S - Store to FLASH
+     *                  * R - Reload from FLASH
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Default_Configuration(DIRECTION dir, char *value);
+
+     /* ----------------------------------------------------------------------------------------*/
+
+     /* Lens Fitted to Imager Messages <IL> */
+
+     /* Lens Type Fitted
+     *
+     * @param dir direction can be READ. ENG and SET modes aren't acceptable
+     * @param/return value pointer can be:
+     *                  * 0 - No Lens
+     *                  * 1 - MW f/2, Manual Focus 35mm (Merlin 27°)
+     *                  * 2 - MW f/2, Manual Focus 100mm (Merlin 9°)
+     *                  * 3 - LW f/2, Manual Focus 35mm (Harrier 27°)
+     *                  * 4 - LW f/2, Manual Focus 100mm (Harrier 9°)
+     *                  * 5 - DualBand f/2, Manual Focus 100mm (CondorII 9°)
+     *                  * 6 - DualBand f/3, Manual Focus ???mm (CondorII 2°)
+     *                  * 10 - MW f/4, Fixed Focus 150mm (Hawk 4°)
+     *                  * 11 - MW f/4, Fixed Focus 50mm (Hawk 12°)
+     *                  * 20 - MW f/4, CZ 24mm – 326mm (Hawk 24° – 1.8°)
+     *                  * 21 - MW f/5.7, CZ (Merlin 24° – 2.0°)
+     *                  * 22 - MW f/4, CZ 80mm - 960mm
+     *                  * 30 - LW f/3.5, DFoV Harrier 3.3°/9.9°)
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Lens_Type_Fitted(DIRECTION dir, int *value);
+
+     /* Lens EFL Widest FoV     LSB = 1 mm
+     *
+     * @param dir direction can be READ. ENG and SET modes aren't acceptable
+     * @param/return value pointer can be 1 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Lens_EFL_Widest_FoV(DIRECTION dir, int *value);
+
+     /* Lens EFL Narrowest FoV     LSB = 1 mm
+     *
+     * @param dir direction can be READ. ENG and SET modes aren't acceptable
+     * @param/return value pointer can be 1 to 9999
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Lens_EFL_Narrowest_FoV(DIRECTION dir, int *value);
+
      /* ----------------------------------------------------------------------------------------*/
 
      /* Zoom Messages <LZ> */
@@ -1572,6 +1709,7 @@ public :
      /* Autofocus Messages <LA> */
 
      /* Optimise Focus Distance (single sweep)
+     *                  value 0 can be SET, check protocol
      *
      * @param dir direction can be READ and SET.ENG mode isn't acceptable
      * @param/return value pointer can be:
@@ -1631,7 +1769,22 @@ public :
      */
      int Humidity_Sensor(DIRECTION dir, int *value);
 
-     // ASK AHMED
+     /* Lens BITE
+     *              D0 : 0 = Ok, 1= Initialising (warning only)
+     *              D1 : 0 = Ok, 1 = Communications Error
+     *              D2 : 0 = Ok, 1 = NVRAM Datum Error
+     *              D3 : 0 = Ok, 1 = NVRAM Calibration Temp Error
+     *              D4 : 0 = Ok, 1 = Zoom Position Sensor Error
+     *              D5 : 0 = Ok, 1 = Focus Position Sensor Error
+     *              D6 : 0 = Ok, 1 = Focus Optocouple Error
+     *              D7 : 0 = Ok, 1 = Exercise Function Timeout
+     *
+     * @param dir direction can be READ. SET or ENG mode aren't acceptable
+     * @param/return value pointer can be 0 to 255
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+     */
+     int Lens_BITE(DIRECTION dir, int *value);
 
      /* ----------------------------------------------------------------------------------------*/
 

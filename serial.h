@@ -18,15 +18,39 @@
 
     class Serial {
 
+    public:
+        QSerialPort::BaudRate BaudRate;
+        QSerialPort::StopBits StopBits;
+        QSerialPort::Parity Parity;
+        QSerialPort::DataBits DataBits;
+
     private :
         QSerialPort serialPort;
     public :
-        Serial(){}
 
-        Serial(QString serialPortName, QSerialPort::BaudRate serialPortBaudRate = QSerialPort::Baud9600,
-            QSerialPort::StopBits serialPortStopBits = QSerialPort::OneStop, QSerialPort::Parity serialPortParity = QSerialPort::NoParity);
+        Serial()
+        {
+            BaudRate = QSerialPort::Baud9600;
+            DataBits = QSerialPort::Data8;
+            StopBits = QSerialPort::OneStop;
+            Parity   = QSerialPort::NoParity;
+        }
 
         virtual ~Serial();
+
+        /** Open the serial port for reading and writing.
+        *
+        * @param name of serial port
+        * @param BaudRate
+        * @param DataBits
+        * @param StopBits
+        * @param Parity
+        *
+        * @return boolean is serial port opened correctly
+        */
+        bool open(QString serialPortName, QSerialPort::BaudRate serialPortBaudRate = QSerialPort::Baud9600, QSerialPort::DataBits serialPortDataBits = QSerialPort::Data8,
+            QSerialPort::StopBits serialPortStopBits = QSerialPort::OneStop, QSerialPort::Parity serialPortParity = QSerialPort::NoParity);
+
 
         /** Writes a string of bytes to the serial port.
         *
@@ -51,6 +75,10 @@
         /** Flushes everything from the serial port's read buffer
         */
         void flush();
+
+        /** Close serial port
+        */
+        void close();
 
         friend void availableSerialPorts();
 

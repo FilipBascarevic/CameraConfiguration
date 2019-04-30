@@ -1617,49 +1617,30 @@ int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value)
         return -1;
     }
     else {
-        // Do Set operation
-        buff_send[1] = 'S';
-        buff_send[5] = *value;
-        buff_send[6] = '>';
+
+        // Because SET is not acceptable, in ENV mode user only can do READ
+        buff_send[1] = 'R';
+        buff_send[5] = '>';
 
         // Send it via Serial port
-        numWrite = write(buff_send, 7);
-        // Check do we receive 7 characters
-        if (numWrite != 7) {
-            out << "Message isn't send successfully in SET mode" << endl;
-            return -1;
-        }
-
-        // Do not wait response. Instead do READ to check does value
-        // SET correctly
-        char var_buff_send[6];
-        var_buff_send[0] = '<';
-        var_buff_send[1] = 'R';
-        var_buff_send[2] = 'C';
-        var_buff_send[3] = 'C';
-        var_buff_send[4] = 'P';
-        var_buff_send[5] = '>';
-
-        // Do READ to check SET operation
-        // Send it via Serial port
-        qint64 numWrite_var = write(var_buff_send, 6);
+        numWrite = write(buff_send, 6);
         // Check do we receive 6 characters
-        if (numWrite_var != 6) {
-            out << "Message isn't send successfully in READ mode" << endl;
+        if (numWrite != 6) {
+            out << "Message isn't send successfully in ENV mode" << endl;
             return -1;
         }
         // Wait response
         numRead = read(buff_receive, 7);
+
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
-
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENV mode" << endl;
             return -1;
         }
     }
