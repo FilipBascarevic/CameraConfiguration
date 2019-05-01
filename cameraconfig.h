@@ -1,4 +1,0 @@
-#ifndef CAMERACONFIG_H
-#define CAMERACONFIG_H
-
-#endif // CAMERACONFIG_H
