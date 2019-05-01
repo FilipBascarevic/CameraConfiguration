@@ -8,7 +8,7 @@
      * @resuilt is true if action is successful, otherwise is false
 */
 
-bool SLX_III_class::UART_auto_detect_configuration(QString serialPortName)
+bool SLX_III_class::UART_Auto_Detect_Configuration(QString serialPortName)
 {
 
     // counter which represent BaudRate. It can be form 0 to 4

@@ -179,7 +179,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
         numWrite = write(buff_send, 7);
         // Check do we receive 7 characters
         if (numWrite != 7) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -198,7 +198,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
         qint64 numWrite_var = write(var_buff_send, 6);
         // Check do we receive 6 characters
         if (numWrite_var != 6) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -212,7 +212,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -224,12 +224,14 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
 }
 
 /* Test Pattern Messages <DP> */
-     /* Test Pattern Enable
+
+/* Test Pattern Type
      *
      * @param dir direction can be READ,SET or ENG
      * @param/return value pointer can be:
-     *              * 0 - Disable
-     *              * 1 - Enable
+     *              * F - Fixed Test Pattern
+     *              * M - Moving Test Pattern
+     *              * 1 - Proxy Test Pattern 1
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -379,8 +381,8 @@ int SLX_III_class::Readout_Direction(DIRECTION dir, char *value)
     // Make valid message
     buff_send[0] = '<';
     buff_send[2] = 'D';
-    buff_send[3] = 'T';
-    buff_send[4] = 'M';
+    buff_send[3] = 'R';
+    buff_send[4] = 'D';
     if(dir == READ) {
         buff_send[1] = 'R';
         buff_send[5] = '>';
@@ -524,7 +526,7 @@ int SLX_III_class::Readout_Mode(DIRECTION dir, char *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Readout Mode!!!" << endl;
         return -1;
     }
 
@@ -614,7 +616,7 @@ int SLX_III_class::Trigger_Method(DIRECTION dir, char *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Trigger Method!!!" << endl;
         return -1;
     }
 
@@ -702,7 +704,7 @@ int SLX_III_class::Frame_Rate(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Frame Rate!!!" << endl;
         return -1;
     }
 
@@ -790,7 +792,7 @@ int SLX_III_class::Frame_Period(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Stare Time!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Frame Period!!!" << endl;
         return -1;
     }
 

@@ -93,7 +93,7 @@ int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for DRE Overlay Enable!!!" << endl;
         return -1;
     }
 
@@ -183,7 +183,7 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for DRE Overlay Colour!!!" << endl;
         return -1;
     }
 
@@ -274,7 +274,7 @@ int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Autofocus Overlay Enable!!!" << endl;
         return -1;
     }
 
@@ -364,7 +364,7 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Autofocus Overlay Colour!!!" << endl;
         return -1;
     }
 
@@ -455,7 +455,7 @@ int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Tracker Overlay Enable!!!" << endl;
         return -1;
     }
 
@@ -548,7 +548,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -637,7 +637,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -726,7 +726,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -816,7 +816,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -909,7 +909,7 @@ int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -998,7 +998,7 @@ int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int 
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -1087,7 +1087,7 @@ int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *va
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -1177,7 +1177,7 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -1270,7 +1270,7 @@ int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *val
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -1345,7 +1345,7 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -1359,7 +1359,7 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -1434,7 +1434,7 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -1448,7 +1448,7 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -1538,7 +1538,7 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -1631,7 +1631,7 @@ int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -1720,7 +1720,7 @@ int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *va
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -1809,7 +1809,7 @@ int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -1899,7 +1899,7 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -1992,7 +1992,7 @@ int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -2081,7 +2081,7 @@ int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -2156,7 +2156,7 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -2170,7 +2170,7 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -2260,7 +2260,7 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -2353,7 +2353,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -2428,7 +2428,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -2442,7 +2442,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -2517,7 +2517,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -2531,7 +2531,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -2621,7 +2621,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -2714,7 +2714,7 @@ int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -2803,7 +2803,7 @@ int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -2892,7 +2892,7 @@ int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -2982,7 +2982,7 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -3075,7 +3075,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -3150,7 +3150,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -3164,7 +3164,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -3239,7 +3239,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -3253,7 +3253,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -3343,7 +3343,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -3436,7 +3436,7 @@ int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -3525,7 +3525,7 @@ int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *va
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -3600,7 +3600,7 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -3614,7 +3614,7 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -3704,7 +3704,7 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -3793,7 +3793,7 @@ int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Value!!!" << endl;
         return -1;
     }
 
@@ -3886,7 +3886,7 @@ int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -3961,7 +3961,7 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -3975,7 +3975,7 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -4050,7 +4050,7 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -4064,7 +4064,7 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -4154,7 +4154,7 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -4247,7 +4247,7 @@ int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -4336,7 +4336,7 @@ int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *valu
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -4425,7 +4425,7 @@ int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -4515,7 +4515,7 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -4604,7 +4604,7 @@ int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Value!!!" << endl;
         return -1;
     }
 
@@ -4697,7 +4697,7 @@ int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *va
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Enable!!!" << endl;
         return -1;
     }
 
@@ -4772,7 +4772,7 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -4786,7 +4786,7 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start column!!!" << endl;
         return -1;
     }
 
@@ -4861,7 +4861,7 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -4875,7 +4875,7 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item start row!!!" << endl;
         return -1;
     }
 
@@ -4965,7 +4965,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Text Item Colour!!!" << endl;
         return -1;
     }
 
@@ -4975,7 +4975,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
 
 /* ----------------------------------------------------------------------------------------*/
 
-/* Text Item Enable
+/* DRE Mimic Enable
      *
      * @param dir direction can be SET and READ. ENG mode isn't acceptable
      * @param/return value pointer can be:
@@ -4983,7 +4983,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
      *                  * 1 - Enabled
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
-     */
+*/
 int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
 {
     qint64 numRead, numWrite;
@@ -5058,7 +5058,7 @@ int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for DRE Mimic Enable!!!" << endl;
         return -1;
     }
 
@@ -5133,7 +5133,7 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -5147,7 +5147,7 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic start column!!!" << endl;
         return -1;
     }
 
@@ -5222,7 +5222,7 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -5236,7 +5236,7 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic start row!!!" << endl;
         return -1;
     }
 
@@ -5326,7 +5326,7 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Colour!!!" << endl;
         return -1;
     }
 
@@ -5416,7 +5416,7 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Background Colour!!!" << endl;
         return -1;
     }
 
@@ -5505,7 +5505,7 @@ int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Width (columns)!!!" << endl;
         return -1;
     }
 
@@ -5594,7 +5594,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Height (rows)!!!" << endl;
         return -1;
     }
 
@@ -5604,7 +5604,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
 
 /* ----------------------------------------------------------------------------------------*/
 
-/* Text Item Enable
+/* Target Size Mimic Enable
      *
      * @param dir direction can be SET and READ. ENG mode isn't acceptable
      * @param/return value pointer can be:
@@ -5612,7 +5612,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
      *                  * 1 - Enabled
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
-     */
+*/
 int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
 {
     qint64 numRead, numWrite;
@@ -5687,7 +5687,7 @@ int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Target Size Mimic Enable!!!" << endl;
         return -1;
     }
 
@@ -5776,7 +5776,7 @@ int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic start column!!!" << endl;
         return -1;
     }
 
@@ -5851,7 +5851,7 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -5865,7 +5865,7 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic start row!!!" << endl;
         return -1;
     }
 
@@ -5955,7 +5955,7 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Colour (Foreground)!!!" << endl;
         return -1;
     }
 
@@ -6030,7 +6030,7 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -6044,7 +6044,7 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Width (columns)!!!" << endl;
         return -1;
     }
 
@@ -6119,7 +6119,7 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 11);
 
-        // Check do we receive 10 characters
+        // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
             if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
@@ -6133,7 +6133,7 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mimic Height (rows)!!!" << endl;
         return -1;
     }
 
@@ -6228,7 +6228,7 @@ int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Boresight Marker Type!!!" << endl;
         return -1;
     }
 
@@ -6317,7 +6317,7 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Boresight Marker Column!!!" << endl;
         return -1;
     }
 
@@ -6406,7 +6406,7 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Boresight Marker Row!!!" << endl;
         return -1;
     }
 
@@ -6496,7 +6496,7 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Boresight Marker Colour!!!" << endl;
         return -1;
     }
 
@@ -6507,7 +6507,7 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
 /* Boresight Marker Width (columns)
      *
      * @param dir direction can be SET and READ. ENG mode isn't acceptable
-     * @param/return value pointer can be 0 to 2043
+     * @param/return value pointer can be 0 to 2047
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -6585,7 +6585,7 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Boresight Marker Width!!!" << endl;
         return -1;
     }
 
@@ -6596,7 +6596,7 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
 /* Boresight Marker Height (rows)
      *
      * @param dir direction can be SET and READ. ENG mode isn't acceptable
-     * @param/return value pointer can be 0 to 2043
+     * @param/return value pointer can be 0 to 2047
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -6674,7 +6674,7 @@ int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Boresight Marker Height!!!" << endl;
         return -1;
     }
 

@@ -38,7 +38,7 @@ public :
 
      * @resuilt is true if action is successful, otherwise is false
      */
-    bool UART_auto_detect_configuration(QString serialPortName);
+    bool UART_Auto_Detect_Configuration(QString serialPortName);
 
 
 
@@ -458,9 +458,9 @@ public :
      *
      * @param dir direction can be READ and ENG. SET mode isn't acceptable
      * @param/return value pointer can be:
-     *              * N - Optimisation Disabled
-     *              * S - Frame Rate Limited
-     *              * R - Stare Time Limited
+     *              * N - No Op (Idle)
+     *              * S - Store In Progress
+     *              * R - Restore In Progress
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
      int Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value);
@@ -505,8 +505,8 @@ public :
      *
      * @param dir direction can be READ,SET or ENG
      * @param/return value pointer can be:
-     *              * M - Fixed Test Pattern
-     *              * F - Moving Test Pattern
+     *              * F - Fixed Test Pattern
+     *              * M - Moving Test Pattern
      *              * 1 - Proxy Test Pattern 1
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
@@ -579,12 +579,12 @@ public :
      /* ----------------------------------------------------------------------------------------*/
 
      /* Referencer <ER> */
-     /* Use Peltier During Calibration Normal Calibration Engineering Calibration (external reference)
+     /* Use Peltier During Calibration
      *
      * @param dir direction can be READ,SET or ENG
      * @param/return value pointer can be:
-     *              * 0 - Disable
-     *              * 1 - Enable
+     *              * 0 - Normal Calibration
+     *              * 1 - Engineering Calibration (external reference)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
@@ -1494,7 +1494,7 @@ public :
      int Boresight_Marker_Height(DIRECTION dir, int *value);
 
      /* ----------------------------------------------------------------------------------------*/
-     // SKIP ALL OTER METHODS FROM THIS GROUP BECAUSE ALL IS SIMILLAR THEN IT!!!
+
      /* Imager Configuration Message Group <I> */
 
      /* Imager Identity (part 1)

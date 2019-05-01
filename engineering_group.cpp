@@ -9,12 +9,12 @@
 
 #include "camera_config.h"
 
-/* Use Peltier During Calibration Normal Calibration Engineering Calibration (external reference)
+/* Use Peltier During Calibration
      *
      * @param dir direction can be READ,SET or ENG
      * @param/return value pointer can be:
-     *              * 0 - Disable
-     *              * 1 - Enable
+     *              * 0 - Normal Calibration
+     *              * 1 - Engineering Calibration (external reference)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -240,7 +240,7 @@ int SLX_III_class::Move_Paddle(DIRECTION dir, char *value)
     buff_send[3] = 'R';
     buff_send[4] = 'P';
     if(dir == READ) {
-        out << "READ mode of transfer isn't acceptible for Stare Time!!!" << endl;
+        out << "READ mode of transfer isn't acceptible for Move Paddle!!!" << endl;
         return -1;
     }
     else if (dir == SET){

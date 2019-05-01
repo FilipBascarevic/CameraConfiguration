@@ -170,7 +170,7 @@ int SLX_III_class::AGO_Lock(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for DRE Polarity!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for AGO Lock!!!" << endl;
         return -1;
     }
 
@@ -197,7 +197,7 @@ int SLX_III_class::DRE_Display_Out(DIRECTION dir, char *value)
     // Make valid message
     buff_send[0] = '<';
     buff_send[2] = 'A';
-    buff_send[3] = 'P';
+    buff_send[3] = 'D';
     if(dir == READ) {
         buff_send[1] = 'R';
         buff_send[4] = '>';
@@ -253,7 +253,7 @@ int SLX_III_class::DRE_Display_Out(DIRECTION dir, char *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for DRE Polarity!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for DRE Display Out!!!" << endl;
         return -1;
     }
 
@@ -817,7 +817,7 @@ int SLX_III_class::Set_AGO_Offset(DIRECTION dir, int *value)
      * @param/return value pointer can be:
      *              * A - Auto (Auto Gain and Offset)
      *              * S - Semi-auto (Manual Gain, Auto Offset)
-     *              * Manual (Manual Gain and Offset)
+     *              * M - Manual (Manual Gain and Offset)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 int SLX_III_class::AGO_Mode(DIRECTION dir, char *value)
@@ -975,7 +975,7 @@ int SLX_III_class::DRE_Speed(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Set AGO Offset!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for DRE Speed!!!" << endl;
         return -1;
     }
 
@@ -1337,7 +1337,7 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
         numWrite = write(buff_send, 10);
         // Check do we receive 10 characters
         if (numWrite != 10) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -1357,7 +1357,7 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
         qint64 numWrite_var = write(var_buff_send, 7);
         // Check do we receive 7 characters
         if (numWrite_var != 7) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -1371,7 +1371,7 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
     }
@@ -1383,7 +1383,7 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
 /* Low Percentile to Find
      *
      * @param dir direction can be SET, READ or ENG
-     * @param/return value pointer can be in range 0 to 255
+     * @param/return value pointer can be in range 1 to 255
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1470,7 +1470,7 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
         numWrite = write(buff_send, 10);
         // Check do we receive 10 characters
         if (numWrite != 10) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -1490,7 +1490,7 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
         qint64 numWrite_var = write(var_buff_send, 7);
         // Check do we receive 7 characters
         if (numWrite_var != 7) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -1504,7 +1504,7 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
     }
@@ -1516,7 +1516,7 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
 /* High grey level to match found percentile to
      *
      * @param dir direction can be SET, READ or ENG
-     * @param/return value pointer can be in range 0 to 255
+     * @param/return value pointer can be in range 1 to 255
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1603,7 +1603,7 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
         numWrite = write(buff_send, 10);
         // Check do we receive 10 characters
         if (numWrite != 10) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -1623,7 +1623,7 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
         qint64 numWrite_var = write(var_buff_send, 7);
         // Check do we receive 7 characters
         if (numWrite_var != 7) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -1637,7 +1637,7 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
     }
@@ -1649,7 +1649,7 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
 /* Low grey level to match found percentile to
      *
      * @param dir direction can be SET, READ or ENG
-     * @param/return value pointer can be in range 0 to 255
+     * @param/return value pointer can be in range 1 to 255
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1737,7 +1737,7 @@ int SLX_III_class::Low_grey_level_to_match_found_percentile_to(DIRECTION dir, in
         numWrite = write(buff_send, 10);
         // Check do we receive 10 characters
         if (numWrite != 10) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -1757,7 +1757,7 @@ int SLX_III_class::Low_grey_level_to_match_found_percentile_to(DIRECTION dir, in
         qint64 numWrite_var = write(var_buff_send, 7);
         // Check do we receive 7 characters
         if (numWrite_var != 7) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -1771,7 +1771,7 @@ int SLX_III_class::Low_grey_level_to_match_found_percentile_to(DIRECTION dir, in
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -1956,7 +1956,7 @@ int SLX_III_class::Region_of_Interest_Centre_Y_Position(DIRECTION dir, int *valu
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Region of Interest Centre X Position!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Region of Interest Centre Y Position!!!" << endl;
         return -1;
     }
 
@@ -1998,7 +1998,7 @@ int SLX_III_class::Region_of_Interest_Size_X_Dimension(DIRECTION dir, int *value
         // Wait response
         numRead = read(buff_receive, 10);
 
-        // Check do we receive 11 characters
+        // Check do we receive 10 characters
         if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
@@ -2053,7 +2053,7 @@ int SLX_III_class::Region_of_Interest_Size_X_Dimension(DIRECTION dir, int *value
 
 }
 
-/* Region of Interest Size X Dimension n/256th Image Width
+/* Region of Interest Size Y Dimension n/256th Image Height
      *
      * @param dir direction can be SET and READ.ENG mode isn't acceptable
      * @param/return value pointer can be in range 1 to 255
@@ -2087,7 +2087,7 @@ int SLX_III_class::Region_of_Interest_Size_Y_Dimension(DIRECTION dir, int *value
         // Wait response
         numRead = read(buff_receive, 10);
 
-        // Check do we receive 11 characters
+        // Check do we receive 10 characters
         if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
@@ -2134,7 +2134,7 @@ int SLX_III_class::Region_of_Interest_Size_Y_Dimension(DIRECTION dir, int *value
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Region of Interest Size X Dimension!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Region of Interest Size Y Dimension!!!" << endl;
         return -1;
     }
 

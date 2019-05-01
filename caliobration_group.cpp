@@ -60,11 +60,11 @@ int SLX_III_class::Perform_Calibration(DIRECTION dir, int *value)
         }
     }
     else if (dir == READ) {
-        out << "READ mode of transfer isn't acceptible for Change AGO Gain Nudge!!!" << endl;
+        out << "READ mode of transfer isn't acceptible for Perform Calibration!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Change AGO Gain Nudge!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Perform Calibration!!!" << endl;
         return -1;
     }
 
@@ -161,7 +161,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
         numWrite = write(buff_send, 6);
         // Check do we receive 10 characters
         if (numWrite != 6) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -179,7 +179,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
         qint64 numWrite_var = write(var_buff_send, 5);
         // Check do we receive 5 characters
         if (numWrite_var != 5) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -193,7 +193,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -206,7 +206,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
 
 /* Stare Time (Waveband 1) LSB = 1 us
      *
-     * @param dir direction can be SET. READ and ENG mode aren't acceptable
+     * @param dir direction can be SET or READ. ENG mode isn't acceptable
      * @param/return value pointer can be 0 to 65535
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
@@ -294,7 +294,7 @@ int SLX_III_class::Stare_Time(DIRECTION dir, int *value)
 
 /* Integration Capacitors (Waveband 1)
      *
-     * @param dir direction can be SET. READ and ENG mode aren't acceptable
+     * @param dir direction can be SET or READ.ENG mode isn't acceptable
      * @param/return value pointer can be 0 to 3
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
@@ -459,7 +459,7 @@ int SLX_III_class::Select_Calibration_Table(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Integration Capacitors!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Select Calibration Table!!!" << endl;
         return -1;
     }
 
@@ -557,7 +557,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
         numWrite = write(buff_send, 6);
         // Check do we receive 10 characters
         if (numWrite != 6) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -575,7 +575,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
         qint64 numWrite_var = write(var_buff_send, 5);
         // Check do we receive 5 characters
         if (numWrite_var != 5) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -589,7 +589,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -600,14 +600,10 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
 
 }
 
-/* Perform Calibration
+/* Reject Last Calibration
      *
      * @param dir direction can be SET. READ and ENG mode aren't acceptable
-     * @param/return value pointer can be:
-     *              * 1 - 1 Point Internal Calibration
-     *              * 2 - 2 Point Internal Calibration
-     *              * 3 - 3 Point Internal Calibration
-     *              * 0 - External Calibration (Offset Update Only)
+     *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 int SLX_III_class::Reject_Last_Calibration(DIRECTION dir)
@@ -621,7 +617,7 @@ int SLX_III_class::Reject_Last_Calibration(DIRECTION dir)
     buff_send[0] = '<';
     buff_send[1] = 'S';
     buff_send[2] = 'C';
-    buff_send[3] = 'P';
+    buff_send[3] = 'R';
     buff_send[4] = '>';
 
     if (dir == SET){
@@ -754,7 +750,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
         numWrite = write(buff_send, 7);
         // Check do we receive 7 characters
         if (numWrite != 7) {
-            out << "Message isn't send successfully in SET mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -773,7 +769,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
         qint64 numWrite_var = write(var_buff_send, 6);
         // Check do we receive 6 characters
         if (numWrite_var != 6) {
-            out << "Message isn't send successfully in READ mode" << endl;
+            out << "Message isn't send successfully in ENG mode" << endl;
             return -1;
         }
         // Wait response
@@ -787,7 +783,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
 
         }
         else {
-            out << "Message isn't receive successfully in SET mode" << endl;
+            out << "Message isn't receive successfully in ENG mode" << endl;
             return -1;
         }
 
@@ -1056,7 +1052,7 @@ int SLX_III_class::Mid_Target_Well_Fill(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Low Target Well Fill!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Mid Target Well Fill!!!" << endl;
         return -1;
     }
 
@@ -1144,7 +1140,7 @@ int SLX_III_class::High_Target_Well_Fill(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Low Target Well Fill!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for High Target Well Fill!!!" << endl;
         return -1;
     }
 
@@ -1318,7 +1314,7 @@ int SLX_III_class::Optimisation_Target_Well_Fill(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Low Target Well Fill!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Optimisation Target Well Fill!!!" << endl;
         return -1;
     }
 
@@ -1406,7 +1402,7 @@ int SLX_III_class::Optimisation_Maximum_Stare_Time(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Stare Time!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Optimisation Maximum Stare Time!!!" << endl;
         return -1;
     }
 
@@ -1434,7 +1430,7 @@ int SLX_III_class::Store_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
     buff_send[3] = 'C';
     buff_send[4] = 'S';
     if(dir == READ) {
-        out << "READ mode of transfer isn't acceptible for Stare Time!!!" << endl;
+        out << "READ mode of transfer isn't acceptible for Store Calibration Table to NVRAM!!!" << endl;
         return -1;
     }
     else if (dir == SET){
@@ -1509,7 +1505,7 @@ int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
     buff_send[3] = 'C';
     buff_send[4] = 'R';
     if(dir == READ) {
-        out << "READ mode of transfer isn't acceptible for Stare Time!!!" << endl;
+        out << "READ mode of transfer isn't acceptible for Restore Calibration Table from NVRAM!!!" << endl;
         return -1;
     }
     else if (dir == SET){
@@ -1568,9 +1564,9 @@ int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
      *
      * @param dir direction can be READ and ENG. SET mode isn't acceptable
      * @param/return value pointer can be:
-     *              * N - Optimisation Disabled
-     *              * S - Frame Rate Limited
-     *              * R - Stare Time Limited
+     *              * N - No Op (Idle)
+     *              * S - Store In Progress
+     *              * R - Restore In Progress
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value)
@@ -1613,7 +1609,7 @@ int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Optimisation Method!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Store / Restore NVRAM Progress!!!" << endl;
         return -1;
     }
     else {

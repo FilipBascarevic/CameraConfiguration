@@ -12,7 +12,7 @@
 /* Spatial Filter Sharpening Level
      *
      * @param dir direction can be SET and READ. ENG mode isn't acceptable
-     * @param/return value pointer can be 00 = Off, 31 = Maximum Sharpening
+     * @param/return value pointer can be 00 = Off to 31 = Maximum Sharpening
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -89,7 +89,7 @@ int SLX_III_class::Spatial_Filter_Sharpening_Level(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Spatial Filter Sharpening Level!!!" << endl;
         return -1;
     }
 
@@ -181,7 +181,7 @@ int SLX_III_class::Image_Stabilisation_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Image Stabilisation Enable!!!" << endl;
         return -1;
     }
 
@@ -457,10 +457,10 @@ int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value)
 
 }
 
-/* Image Stabilisation Damping
+/* Image Stabilisation Threshold
      *
      * @param dir direction can be READ,SET or ENG
-     * @param/return value pointer can be 0 to 63
+     * @param/return value pointer can be 0 to 15
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -807,7 +807,7 @@ int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Turbulence Mitigation Enable!!!" << endl;
         return -1;
     }
 
@@ -818,7 +818,7 @@ int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value)
 /* Turbulence Mitigation Level
      *
      * @param dir direction can be SET and READ. ENG mode isn't acceptable
-     * @param/return value pointer can be 00 = Dynamic (Min), 16 = Static (Max),
+     * @param/return value pointer can be 00 = Dynamic (Min) to 16 = Static (Max),
      *                              17 = Automatic (not yet implemented)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
@@ -896,7 +896,7 @@ int SLX_III_class::Turbulence_Mitigation_Level(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Turbulence Mitigation Level!!!" << endl;
         return -1;
     }
 

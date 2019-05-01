@@ -638,7 +638,57 @@ int SLX_III_class::Detector_Waveband_1(DIRECTION dir, char *value)
 
 }
 
-// ASK AHMED ABOUT ONLY ENG MODE
+/* Default Configuration
+     *
+     * @param dir direction can be ENG. READ and SET modes aren't acceptable
+     * @param/return value pointer can be:
+     *                  * S - Store to FLASH
+     *                  * R - Reload from FLASH
+     *
+     * @resuilt is 0 if action is successful, otherwise is faliure
+*/
+int SLX_III_class::Default_Configuration(DIRECTION dir, char *value)
+{
+    qint64 numWrite;
+    char buff_send[6];
+    QTextStream out(stdout);
+
+
+    // Make valid message
+    buff_send[0] = '<';
+    buff_send[2] = 'I';
+    buff_send[3] = 'C';
+    if(dir == READ) {
+        out << "READ mode of transfer isn't acceptible for Default Configuration!!!" << endl;
+        return -1;
+    }
+    else if (dir == SET){
+        out << "SET mode of transfer isn't acceptible for Default Configuration!!!" << endl;
+        return -1;
+    }
+    else {
+        // Do Set operation
+        buff_send[1] = 'E';
+        buff_send[4] = *value;
+        buff_send[5] = '>';
+
+        // Send it via Serial port
+        numWrite = write(buff_send, 6);
+        // Check do we receive 6 characters
+        if (numWrite != 6) {
+            out << "Message isn't send successfully in SET mode" << endl;
+            return -1;
+        }
+
+        // Because this message doen't accept READ, we can't check what we
+        // SET. Only what we can do is to check does 6 caracters is send via UART
+
+    }
+
+    return 0;
+
+}
+
 /* ----------------------------------------------------------------------------------------*/
 
 /* Lens Type Fitted

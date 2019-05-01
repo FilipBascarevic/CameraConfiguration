@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
     //char *buff = new char[9-5];
     //int value = 0;
     SLX_III_class camera;
+    //camera.UART_Auto_Detect_Configuration("COM1");
     //if (!camera.check_responce_READ(buff_send, 5, buff_receive, 9, buff, 9-5))
     //{
     //   out << "Success" << endl;
