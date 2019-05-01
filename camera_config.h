@@ -18,8 +18,7 @@
  */
 class SLX_III_class : public Serial {
 
-//private :
-public:
+private :
 
     int check_responce_READ (char *buff_send, int buff_send_len, char *buff_receive, int buff_receive_len, char *value, int valLen);
 
@@ -32,6 +31,16 @@ public:
 public :
     // This enum represents direction in methods
     enum DIRECTION {SET, READ, ENG};
+
+    /* UART Auto Detect Configuration
+     *
+     * @param serialPortName represent name of serial port for which we try to find configuration
+
+     * @resuilt is true if action is successful, otherwise is false
+     */
+    bool UART_auto_detect_configuration(QString serialPortName);
+
+
 
     /* DRE/AGO Message Group <A> */
 

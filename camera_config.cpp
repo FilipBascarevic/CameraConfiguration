@@ -1,6 +1,118 @@
 #include "camera_config.h"
 #include <QtMath>
 
+/* UART Auto Detect Configuration
+     *
+     * @param serialPortName represent name of serial port for which we try to find configuration
+
+     * @resuilt is true if action is successful, otherwise is false
+*/
+
+bool SLX_III_class::UART_auto_detect_configuration(QString serialPortName)
+{
+
+    // counter which represent BaudRate. It can be form 0 to 4
+    int baud_rate_cnt = 0;
+    // counter which represent StopBits and Parity. It can be form 0 to 5
+    int stop_bits_parity_cnt = 0;
+
+    QSerialPort::BaudRate serialBaudRate = QSerialPort::Baud9600;
+    QSerialPort::StopBits serialStopBits = QSerialPort::OneStop;
+    QSerialPort::Parity serialParity = QSerialPort::NoParity;
+    QSerialPort::DataBits serialDataBits = QSerialPort::Data8;
+
+    QTextStream out(stdout);
+
+    while(1) {
+
+        // close serial port
+        close();
+
+        // Configure BaudRate
+        switch (baud_rate_cnt) {
+            case 0:
+                    serialBaudRate = QSerialPort::Baud9600;
+                    break;
+            case 1:
+                    serialBaudRate = QSerialPort::Baud19200;
+                    break;
+            case 2:
+                    serialBaudRate = QSerialPort::Baud38400;
+                    break;
+            case 3:
+                    serialBaudRate = QSerialPort::Baud57600;
+                    break;
+            case 4:
+                    serialBaudRate = QSerialPort::Baud115200;
+                    break;
+            default:
+                    out << "Unknown configuration of BaudRate" << endl;
+                    break;
+        }
+
+        // Configure StopBits and Parity
+        switch (baud_rate_cnt) {
+            case 0:
+                    serialStopBits = QSerialPort::OneStop;
+                    serialParity = QSerialPort::NoParity;
+                    break;
+            case 1:
+                    serialStopBits = QSerialPort::TwoStop;
+                    serialParity = QSerialPort::NoParity;
+                    break;
+            case 2:
+                    serialStopBits = QSerialPort::OneStop;
+                    serialParity = QSerialPort::EvenParity;
+                    break;
+            case 3:
+                    serialStopBits = QSerialPort::TwoStop;
+                    serialParity = QSerialPort::EvenParity;
+                    break;
+            case 4:
+                    serialStopBits = QSerialPort::OneStop;
+                    serialParity = QSerialPort::OddParity;
+                    break;
+            case 5:
+                    serialStopBits = QSerialPort::TwoStop;
+                    serialParity = QSerialPort::OddParity;
+                    break;
+            default:
+                    out << "Unknown configuration of StopBits and Parity" << endl;
+                    break;
+        }
+
+        // Open Serial Port
+        open(serialPortName, serialBaudRate, serialDataBits, serialStopBits, serialParity);
+
+        // Try reading of UART register. If reading is successfull, this is correct configuration and break loop.
+        // If it is not, increase counter/counters and try other configuration.
+        int read_value;
+        if (Configure_Baud_Rate(READ, &read_value) == 0){
+            // Reading is successfull. We found configuration.
+            // Break while loop.
+            // UART configuration user can check in a class fields
+            break;
+        }
+        else {
+            // Try other configuration
+            if (baud_rate_cnt == 4 and stop_bits_parity_cnt == 5) {
+                out << "Program can't find optimal configuration << endl";
+                return false;
+            }
+            else if (stop_bits_parity_cnt == 5){
+                baud_rate_cnt++;
+                stop_bits_parity_cnt = 0;
+            }
+            else {
+                stop_bits_parity_cnt++;
+            }
+        }
+
+    }
+
+    return true;
+}
+
 int SLX_III_class::check_responce_READ(char *buff_send, int buff_send_len, char *buff_receive, int buff_receive_len, char *value, int valLen)
 {
 
