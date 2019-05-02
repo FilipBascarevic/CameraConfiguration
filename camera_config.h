@@ -2215,7 +2215,7 @@ public :
      *              Fault log wraps back to 0 (i.e. contains last 1023 sessions).
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be 0 to 1023
+     * @param/return value pointer can be 1 to 1023
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */

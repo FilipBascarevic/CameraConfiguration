@@ -197,11 +197,12 @@ int SLX_III_class::Imager_Identity_Part_2(DIRECTION dir, int *value)
 
 }
 
-/* Imager Identity (part 2)
-     *              ‘Y’ and ‘Z’ parts of identity : AP5???XXXX-YY-ZZ
+/* Firmware Version (processor module)
+     *              +ve values = Formal Builds
+     *              -ve values = Engineering Builds
      *
-     * @param dir direction can be READ and ENG. SET mode isn't acceptable
-     * @param/return value pointer can be 0 to 9999
+     * @param dir direction can be READ. ENG and SET mode aren't acceptable
+     * @param/return value pointer can be -9999 to 9999
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -249,11 +250,11 @@ int SLX_III_class::Firmware_Version(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Firmware Version!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Firmware Version!!!" << endl;
         return -1;
     }
 
@@ -313,7 +314,7 @@ int SLX_III_class::Imager_Serial_Number(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Imager Serial Number!!!" << endl;
         return -1;
     }
     else {
@@ -406,7 +407,7 @@ int SLX_III_class::Processing_Board_Serial_Number(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Processing Board Serial Number!!!" << endl;
         return -1;
     }
     else {
@@ -499,11 +500,11 @@ int SLX_III_class::Lens_Board_Serial_Number(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Lens Board Serial Number!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Board Serial Number!!!" << endl;
         return -1;
     }
 
@@ -564,11 +565,11 @@ int SLX_III_class::Turbulence_Mitigation_Available(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Turbulence Mitigation Available!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Turbulence Mitigation Available!!!" << endl;
         return -1;
     }
 
@@ -626,11 +627,11 @@ int SLX_III_class::Detector_Waveband_1(DIRECTION dir, char *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Detector Waveband 1!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Detector Waveband 1!!!" << endl;
         return -1;
     }
 
@@ -756,11 +757,11 @@ int SLX_III_class::Lens_Type_Fitted(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Lens Type Fitted!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Type Fitted!!!" << endl;
         return -1;
     }
 
@@ -820,11 +821,11 @@ int SLX_III_class::Lens_EFL_Widest_FoV(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Lens EFL Widest FoV!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens EFL Widest FoV!!!" << endl;
         return -1;
     }
 
@@ -884,11 +885,11 @@ int SLX_III_class::Lens_EFL_Narrowest_FoV(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "Set mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "Set mode of transfer isn't acceptible for Lens EFL Narrowest FoV!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Imager Identity (part 1)!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens EFL Narrowest FoV!!!" << endl;
         return -1;
     }
 

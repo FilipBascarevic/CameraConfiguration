@@ -461,11 +461,11 @@ int SLX_III_class::Referencer_Temperature(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Referencer Temperature!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Local Board TemperatureReferencer Temperature!!!" << endl;
         return -1;
     }
 
@@ -1001,7 +1001,7 @@ int SLX_III_class::Supply_Monitor_1_8V(DIRECTION dir, int *value)
      *              Fault log wraps back to 0 (i.e. contains last 1023 sessions).
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be 0 to 1023
+     * @param/return value pointer can be 1 to 1023
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */

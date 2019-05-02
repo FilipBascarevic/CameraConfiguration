@@ -154,7 +154,7 @@ int SLX_III_class::Zoom_Position_EFL(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Zoom Position EFL!!!" << endl;
         return -1;
     }
 
@@ -243,7 +243,7 @@ int SLX_III_class::Zoom_Speed(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Zoom Speed!!!" << endl;
         return -1;
     }
 
@@ -398,7 +398,7 @@ int SLX_III_class::Focus_Position(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Focus Position!!!" << endl;
         return -1;
     }
 
@@ -487,7 +487,7 @@ int SLX_III_class::Focus_Speed(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Readout Direction!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Focus Speed!!!" << endl;
         return -1;
     }
 
@@ -899,7 +899,7 @@ int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Autofocus Nearest Position!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Autofocus Furthest Position!!!" << endl;
         return -1;
     }
 
@@ -974,10 +974,10 @@ int SLX_III_class::Elapsed_Time_Indicator(DIRECTION dir, int *value)
 
 }
 
-/* Elapsed Time Indicator (ETI) Reading Lens Controller Operating Hours
+/* Number of Power Cycles
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be 0 to 65535
+     * @param/return value pointer can be 0 to 9999
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1165,11 +1165,11 @@ int SLX_III_class::Lens_BITE(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Humidity Sensor!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens BITE!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Humidity Sensor!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens BITE!!!" << endl;
         return -1;
     }
 
@@ -1213,7 +1213,7 @@ int SLX_III_class::Zoom_Narrow_Hard_Stop_Datum(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 10);
 
-        // Check do we receive 11 characters
+        // Check do we receive 10 characters
         if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
@@ -1278,7 +1278,7 @@ int SLX_III_class::Zoom_Wide_Hard_Stop_Datum(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 10);
 
-        // Check do we receive 11 characters
+        // Check do we receive 10 characters
         if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
@@ -1297,11 +1297,11 @@ int SLX_III_class::Zoom_Wide_Hard_Stop_Datum(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Zoom Narrow Hard Stop Datum!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Zoom Wide Hard Stop Datum!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Zoom Narrow Hard Stop Datum!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Zoom Wide Hard Stop Datum!!!" << endl;
         return -1;
     }
 
@@ -1427,11 +1427,11 @@ int SLX_III_class::Focus_Near_Hard_Stop_Datum(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Focus Far (Infinity) Hard Stop Datum!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Focus Near (Close) Hard Stop Datum!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Focus Far (Infinity) Hard Stop Datum!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Focus Near (Close) Hard Stop Datum!!!" << endl;
         return -1;
     }
 
@@ -1492,11 +1492,11 @@ int SLX_III_class::Focus_Optocouple_Sensor_Datum(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Focus Far (Infinity) Hard Stop Datum!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Focus Optocouple Sensor Datum!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Focus Far (Infinity) Hard Stop Datum!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Focus Optocouple Sensor Datum!!!" << endl;
         return -1;
     }
 
@@ -1538,7 +1538,7 @@ int SLX_III_class::Zoom_Optical_Reference_Datum(DIRECTION dir, int *value)
         // Wait response
         numRead = read(buff_receive, 10);
 
-        // Check do we receive 11 characters
+        // Check do we receive 10 characters
         if (numRead == 10) {
             char *val_buff = new char [numWrite - numRead];
             // Check response
@@ -1557,11 +1557,11 @@ int SLX_III_class::Zoom_Optical_Reference_Datum(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Zoom Narrow Hard Stop Datum!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Zoom Optical Reference Datum!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Zoom Narrow Hard Stop Datum!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Zoom Optical Reference Datum!!!" << endl;
         return -1;
     }
 
@@ -1622,11 +1622,11 @@ int SLX_III_class::Focus_Optical_Reference_Datum(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Focus Far (Infinity) Hard Stop Datum!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Focus (Atherm) Optical Reference Datum!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Focus Far (Infinity) Hard Stop Datum!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Focus (Atherm) Optical Reference Datum!!!" << endl;
         return -1;
     }
 
@@ -1704,7 +1704,7 @@ int SLX_III_class::Lens_Local_Board_Temperature(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 1 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1754,11 +1754,11 @@ int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 1!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 1!!!" << endl;
         return -1;
     }
 
@@ -1769,7 +1769,7 @@ int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 2 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1819,11 +1819,11 @@ int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 2!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 2!!!" << endl;
         return -1;
     }
 
@@ -1834,7 +1834,7 @@ int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 3 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1884,11 +1884,11 @@ int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 3!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 3!!!" << endl;
         return -1;
     }
 
@@ -1899,7 +1899,7 @@ int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 4 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -1949,11 +1949,11 @@ int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 4!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 4!!!" << endl;
         return -1;
     }
 
@@ -1964,7 +1964,7 @@ int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 5 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -2014,11 +2014,11 @@ int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 5!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 5!!!" << endl;
         return -1;
     }
 
@@ -2029,7 +2029,7 @@ int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 6 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -2079,11 +2079,11 @@ int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 6!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 6!!!" << endl;
         return -1;
     }
 
@@ -2094,7 +2094,7 @@ int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 7 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -2144,11 +2144,11 @@ int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 7!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 7!!!" << endl;
         return -1;
     }
 
@@ -2159,7 +2159,7 @@ int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value)
 /* Lens Temperature Sensor 8 LSB = 1C
      *
      * @param dir direction can be READ. SET or ENG mode aren't acceptable
-     * @param/return value pointer can be -50 to 99
+     * @param/return value pointer can be -99 to 99
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
@@ -2209,11 +2209,11 @@ int SLX_III_class::Lens_Temperature_Sensor_8(DIRECTION dir, int *value)
         }
     }
     else if (dir == SET){
-        out << "SET mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "SET mode of transfer isn't acceptible for Lens Temperature Sensor 8!!!" << endl;
         return -1;
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Lens Local Board Temperature!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Lens Temperature Sensor 8!!!" << endl;
         return -1;
     }
 

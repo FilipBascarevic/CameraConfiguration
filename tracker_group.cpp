@@ -152,7 +152,7 @@ int SLX_III_class::Tracker_Type(DIRECTION dir, int *value)
 
         // Send it via Serial port
         numWrite = write(buff_send, 6);
-        // Check do we receive 5 characters
+        // Check do we receive 6 characters
         if (numWrite != 6) {
             out << "Message isn't send successfully in SET mode" << endl;
             return -1;
@@ -612,7 +612,7 @@ int SLX_III_class::Target_Position_X(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Target Position!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Target Position X!!!" << endl;
         return -1;
     }
 
@@ -701,7 +701,7 @@ int SLX_III_class::Target_Position_Y(DIRECTION dir, int *value)
         }
     }
     else {
-        out << "ENG mode of transfer isn't acceptible for Target Position!!!" << endl;
+        out << "ENG mode of transfer isn't acceptible for Target Position Y!!!" << endl;
         return -1;
     }
 
