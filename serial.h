@@ -13,8 +13,8 @@
 
     #include <QStringList>
     #include<QTextStream>
-    #include<QSerialPort>
-    #include<QSerialPortInfo>
+    #include<QtSerialPort/qserialport.h>
+    #include<QtSerialPort/qserialportinfo.h>
 
     class Serial {
 
@@ -26,9 +26,10 @@
 
     private :
         QSerialPort serialPort;
+        QTextStream standardOutput;
     public :
 
-        Serial()
+        Serial() : standardOutput(stdout)
         {
             BaudRate = QSerialPort::Baud9600;
             DataBits = QSerialPort::Data8;

@@ -95,7 +95,7 @@ bool SLX_III_class::UART_Auto_Detect_Configuration(QString serialPortName)
         }
         else {
             // Try other configuration
-            if (baud_rate_cnt == 4 and stop_bits_parity_cnt == 5) {
+            if (baud_rate_cnt == 4 && stop_bits_parity_cnt == 5) {
                 out << "Program can't find optimal configuration << endl";
                 return false;
             }

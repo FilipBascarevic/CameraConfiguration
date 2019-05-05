@@ -8,16 +8,32 @@ int main(int argc, char *argv[])
 
     QTextStream out(stdout);
 
-    //Serial serial;
-    //availableSerialPorts();
-    //int result;
-    //int number;
-    //char buff[6] = {'-', '0', '0', '1', '2', '3'};
-    //char buff_send[5] = {'<', 'R', 'A', 'P', '>'};
-    //char buff_receive[9] = {'<', 'R', 'A', 'P', '-', '1', '2', '1', '>'};
-    //char *buff = new char[9-5];
-    //int value = 0;
     SLX_III_class camera;
+    //Serial response;
+    availableSerialPorts();
+
+    bool camera_status = camera.open("COM1", camera.BaudRate, camera.DataBits, camera.StopBits, camera.Parity);
+
+    availableSerialPorts();
+
+    //char send_data[5] = {'<', 'R', 'A', 'P', '>'};
+    //char receive_data[6];
+    //int num_writes = camera.write(send_data, 5);
+    //int num_read = camera.read(receive_data, 6, false);
+    out << endl;
+
+    out << "Reading of Detector Array Type" << endl;
+
+    int value = 0;
+    int result = camera.Detector_Array_Type(SLX_III_class::READ, &value);
+
+    out << "Returned value is value = " << value << endl;
+
+    camera.close();
+    //response.close();
+
+
+
     //camera.UART_Auto_Detect_Configuration("COM1");
     //if (!camera.check_responce_READ(buff_send, 5, buff_receive, 9, buff, 9-5))
     //{

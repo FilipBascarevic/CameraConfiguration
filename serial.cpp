@@ -26,9 +26,6 @@ bool Serial::open(QString serialPortName, QSerialPort::BaudRate serialPortBaudRa
     QSerialPort::Parity serialPortParity)
 {
 
-
-     QTextStream standardOutput(stdout);
-
     // Set a name of serial port
     serialPort.setPortName(serialPortName);
     // Set a BaudRate of serial port
@@ -73,6 +70,10 @@ qint64 Serial::write(const char *buffer, qint64 buffLen)
 
     qint64 numWritten = serialPort.write(buffer, buffLen);
 
+    if(!serialPort.waitForBytesWritten(-1)){
+        standardOutput << QObject::tr("bytesWritten() signal hasn't been emitted.") << endl;
+    }
+
     return numWritten;
 
 }
@@ -83,7 +84,16 @@ qint64 Serial::read(char *buff, qint64 buffLen, bool nullTerminate)
         buffLen--;
     }
 
-    qint64 numRead = serialPort.read(buff, buffLen);
+    qint64 numRead = 0;
+
+    if (serialPort.waitForReadyRead(-1)){
+        numRead = serialPort.read(buff, buffLen);
+    }
+    else {
+        standardOutput << QObject::tr("readyRead() signal hasn't been emitted.") << endl;
+    }
+
+
 
     if (nullTerminate) {
         buff[buffLen] = '\0';
