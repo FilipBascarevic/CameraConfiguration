@@ -172,6 +172,7 @@ void SLX_III_class::convert_number_to_char_array(int number, char *array, int ar
 
         curr_pos++;
     }
+    number = abs(number);
     // Determine digits of number
     for (int i = 0; i < arrayLen; i++) {
         int devider = static_cast <int> (qPow(10, arrayLen - 1 - i));

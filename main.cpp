@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     bool camera_status = camera.open("COM1", camera.BaudRate, camera.DataBits, camera.StopBits, camera.Parity);
 
-    availableSerialPorts();
+    //availableSerialPorts();
 
     //char send_data[5] = {'<', 'R', 'A', 'P', '>'};
     //char receive_data[6];
@@ -22,12 +22,46 @@ int main(int argc, char *argv[])
     //int num_read = camera.read(receive_data, 6, false);
     out << endl;
 
-    out << "Reading of Detector Array Type" << endl;
+    //out << "DRE/AGO Message Group" << endl;
+    out << "Reading :" << endl;
 
+    //char value = 0;
     int value = 0;
-    int result = camera.Detector_Array_Type(SLX_III_class::READ, &value);
+    int result = camera.Turbulence_Mitigation_Level(SLX_III_class::READ, &value);
+    //int result = camera.TEC_Stable(SLX_III_class::READ);
 
     out << "Returned value is value = " << value << endl;
+
+    if (!result) {
+        out << "Successful Reading ..." << endl;
+    }
+    else {
+        value = 'O';
+    }
+
+    out << endl;
+    out << "Writing :" << endl;
+
+    //value = 'G';
+    //value = -12345;
+    result = camera.Turbulence_Mitigation_Level(SLX_III_class::SET, &value);
+    //result = camera.TEC_Stable(SLX_III_class::SET);
+
+    if (!result) {
+        out << "Successful Writing ..." << endl;
+    }
+
+    out << endl;
+    out << "Engineering :" << endl;
+
+    //value = 'G';
+    //value = -12345;
+    result = camera.Turbulence_Mitigation_Level(SLX_III_class::ENG, &value);
+    //result = camera.TEC_Stable(SLX_III_class::ENG);
+
+    if (!result) {
+        out << "Successful Engineering ..." << endl;
+    }
 
     camera.close();
     //response.close();

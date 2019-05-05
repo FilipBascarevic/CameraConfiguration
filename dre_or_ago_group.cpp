@@ -46,7 +46,7 @@ int SLX_III_class::DRE_Polarity(DIRECTION dir, char *value)
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
         }
@@ -73,7 +73,7 @@ int SLX_III_class::DRE_Polarity(DIRECTION dir, char *value)
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -129,7 +129,7 @@ int SLX_III_class::AGO_Lock(DIRECTION dir, int *value)
         if (numRead == 6) {
             char returned_char;
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), &returned_char, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), &returned_char, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // result in int
@@ -159,7 +159,7 @@ int SLX_III_class::AGO_Lock(DIRECTION dir, int *value)
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -215,7 +215,7 @@ int SLX_III_class::DRE_Display_Out(DIRECTION dir, char *value)
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
         }
@@ -242,7 +242,7 @@ int SLX_III_class::DRE_Display_Out(DIRECTION dir, char *value)
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -302,7 +302,7 @@ int SLX_III_class::Change_AGO_Gain_Nudge(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -363,7 +363,7 @@ int SLX_III_class::Set_AGO_Gain_Nudge(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -424,7 +424,7 @@ int SLX_III_class::Change_AGO_Gain(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -482,13 +482,13 @@ int SLX_III_class::Set_AGO_Gain(DIRECTION dir, int *value)
 
         // Check do we receive 12 characters
         if (numRead == 12) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -516,7 +516,7 @@ int SLX_III_class::Set_AGO_Gain(DIRECTION dir, int *value)
         // Check do we receive 6 characters
         if (numRead == 12) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -576,7 +576,7 @@ int SLX_III_class::Change_AGO_Offset_Nudge(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -637,7 +637,7 @@ int SLX_III_class::Set_AGO_Offset_Nudge(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -669,7 +669,7 @@ int SLX_III_class::Set_AGO_Offset_Nudge(DIRECTION dir, int *value)
 int SLX_III_class::Change_AGO_Offset(DIRECTION dir, int *value)
 {
     qint64 numRead, numWrite;
-    char buff_send[12], buff_receive[12];
+    char buff_send[13], buff_receive[13];
     QTextStream out(stdout);
 
 
@@ -681,24 +681,24 @@ int SLX_III_class::Change_AGO_Offset(DIRECTION dir, int *value)
     buff_send[4] = 'M';
     buff_send[5] = 'C';
     convert_number_to_char_array(*value, &buff_send[6],5, true);
-    buff_send[9] = '>';
+    buff_send[12] = '>';
 
     if (dir == SET){
 
         // Send it via Serial port
-        numWrite = write(buff_send, 12);
-        // Check do we receive 12 characters
-        if (numWrite != 12) {
+        numWrite = write(buff_send, 13);
+        // Check do we receive 13 characters
+        if (numWrite != 13) {
             out << "Message isn't send successfully in SET mode" << endl;
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 13);
 
-        // Check do we receive 10 characters
-        if (numRead == 12) {
+        // Check do we receive 13 characters
+        if (numRead == 13) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -756,13 +756,13 @@ int SLX_III_class::Set_AGO_Offset(DIRECTION dir, int *value)
 
         // Check do we receive 12 characters
         if (numRead == 12) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -790,7 +790,7 @@ int SLX_III_class::Set_AGO_Offset(DIRECTION dir, int *value)
         // Check do we receive 12 characters
         if (numRead == 12) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -849,7 +849,7 @@ int SLX_III_class::AGO_Mode(DIRECTION dir, char *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), value, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
         }
@@ -876,7 +876,7 @@ int SLX_III_class::AGO_Mode(DIRECTION dir, char *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -930,13 +930,13 @@ int SLX_III_class::DRE_Speed(DIRECTION dir, int *value)
 
         // Check do we receive 9 characters
         if (numRead == 9) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -964,7 +964,7 @@ int SLX_III_class::DRE_Speed(DIRECTION dir, int *value)
         // Check do we receive 9 characters
         if (numRead == 9) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1018,13 +1018,13 @@ int SLX_III_class::Local_Contrast_Enhancement_Level(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1052,7 +1052,7 @@ int SLX_III_class::Local_Contrast_Enhancement_Level(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1106,13 +1106,13 @@ int SLX_III_class::Edge_Enhancement_Level(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1140,7 +1140,7 @@ int SLX_III_class::Edge_Enhancement_Level(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1194,13 +1194,13 @@ int SLX_III_class::Maximum_Auto_Gain(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1228,7 +1228,7 @@ int SLX_III_class::Maximum_Auto_Gain(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1283,13 +1283,13 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1317,7 +1317,7 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1365,7 +1365,20 @@ int SLX_III_class::High_Percentile_to_Find(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            int value_var;
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite_var)];
+            if (check_responce_READ(var_buff_send, static_cast <int> (numWrite_var), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite_var))){
+                return -1;
+            }
+
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, &value_var, static_cast <int> (numRead-numWrite_var), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+
+            if (*value != value_var) {
+                out << "Set value isn't equal with read value in ENG mode!!!" << endl;
                 return -1;
             }
 
@@ -1416,13 +1429,13 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1450,7 +1463,7 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1498,7 +1511,20 @@ int SLX_III_class::Low_Percentile_to_Find(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            int value_var;
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite_var)];
+            if (check_responce_READ(var_buff_send, static_cast <int> (numWrite_var), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite_var))){
+                return -1;
+            }
+
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, &value_var, static_cast <int> (numRead-numWrite_var), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+
+            if (*value != value_var) {
+                out << "Set value isn't equal with read value in ENG mode!!!" << endl;
                 return -1;
             }
 
@@ -1549,13 +1575,13 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1583,7 +1609,7 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1631,7 +1657,20 @@ int SLX_III_class::High_grey_level_to_match_found_percentile_to(DIRECTION dir, i
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            int value_var;
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite_var)];
+            if (check_responce_READ(var_buff_send, static_cast <int> (numWrite_var), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite_var))){
+                return -1;
+            }
+
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, &value_var, static_cast <int> (numRead-numWrite_var), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+
+            if (*value != value_var) {
+                out << "Set value isn't equal with read value in ENG mode!!!" << endl;
                 return -1;
             }
 
@@ -1682,13 +1721,13 @@ int SLX_III_class::Low_grey_level_to_match_found_percentile_to(DIRECTION dir, in
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1716,7 +1755,7 @@ int SLX_III_class::Low_grey_level_to_match_found_percentile_to(DIRECTION dir, in
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1765,7 +1804,20 @@ int SLX_III_class::Low_grey_level_to_match_found_percentile_to(DIRECTION dir, in
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            int value_var;
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite_var)];
+            if (check_responce_READ(var_buff_send, static_cast <int> (numWrite_var), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite_var))){
+                return -1;
+            }
+
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, &value_var, static_cast <int> (numRead-numWrite_var), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+
+            if (*value != value_var) {
+                out << "Set value isn't equal with read value in ENG mode!!!" << endl;
                 return -1;
             }
 
@@ -1822,13 +1874,13 @@ int SLX_III_class::Region_of_Interest_Centre_X_Position(DIRECTION dir, int *valu
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1856,7 +1908,7 @@ int SLX_III_class::Region_of_Interest_Centre_X_Position(DIRECTION dir, int *valu
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1911,13 +1963,13 @@ int SLX_III_class::Region_of_Interest_Centre_Y_Position(DIRECTION dir, int *valu
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1945,7 +1997,7 @@ int SLX_III_class::Region_of_Interest_Centre_Y_Position(DIRECTION dir, int *valu
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2000,13 +2052,13 @@ int SLX_III_class::Region_of_Interest_Size_X_Dimension(DIRECTION dir, int *value
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2034,7 +2086,7 @@ int SLX_III_class::Region_of_Interest_Size_X_Dimension(DIRECTION dir, int *value
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2089,13 +2141,13 @@ int SLX_III_class::Region_of_Interest_Size_Y_Dimension(DIRECTION dir, int *value
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2123,7 +2175,7 @@ int SLX_III_class::Region_of_Interest_Size_Y_Dimension(DIRECTION dir, int *value
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
