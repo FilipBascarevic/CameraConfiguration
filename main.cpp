@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
 
     //char value = 0;
     int value = 0;
-    int result = camera.Turbulence_Mitigation_Level(SLX_III_class::READ, &value);
-    //int result = camera.TEC_Stable(SLX_III_class::READ);
+    int result = camera.Fill_Display_on_Electronic_Zoom(SLX_III_class::READ, &value);
+    //int result = camera.Perform_Exercise_Mechanism_Function(SLX_III_class::READ);
 
     out << "Returned value is value = " << value << endl;
 
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         out << "Successful Reading ..." << endl;
     }
     else {
-        value = 'O';
+        value = 'S';
     }
 
     out << endl;
@@ -44,8 +44,8 @@ int main(int argc, char *argv[])
 
     //value = 'G';
     //value = -12345;
-    result = camera.Turbulence_Mitigation_Level(SLX_III_class::SET, &value);
-    //result = camera.TEC_Stable(SLX_III_class::SET);
+    result = camera.Fill_Display_on_Electronic_Zoom(SLX_III_class::SET, &value);
+    //result = camera.Perform_Exercise_Mechanism_Function(SLX_III_class::SET);
 
     if (!result) {
         out << "Successful Writing ..." << endl;
@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
 
     //value = 'G';
     //value = -12345;
-    result = camera.Turbulence_Mitigation_Level(SLX_III_class::ENG, &value);
-    //result = camera.TEC_Stable(SLX_III_class::ENG);
+    result = camera.Fill_Display_on_Electronic_Zoom(SLX_III_class::ENG, &value);
+    //result = camera.Perform_Exercise_Mechanism_Function(SLX_III_class::ENG);
 
     if (!result) {
         out << "Successful Engineering ..." << endl;

@@ -48,13 +48,13 @@ int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -82,7 +82,7 @@ int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -138,13 +138,13 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -156,7 +156,7 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -172,7 +172,7 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -229,13 +229,13 @@ int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -263,7 +263,7 @@ int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -319,13 +319,13 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -337,7 +337,7 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -353,7 +353,7 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -410,13 +410,13 @@ int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -444,7 +444,7 @@ int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -503,13 +503,13 @@ int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -537,7 +537,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -592,13 +592,13 @@ int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -626,7 +626,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -681,13 +681,13 @@ int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -715,7 +715,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -771,13 +771,13 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -789,7 +789,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -805,7 +805,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -864,13 +864,13 @@ int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -898,7 +898,7 @@ int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -953,13 +953,13 @@ int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int 
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -987,7 +987,7 @@ int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int 
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1042,13 +1042,13 @@ int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *va
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1076,7 +1076,7 @@ int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *va
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1132,13 +1132,13 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1150,7 +1150,7 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -1166,7 +1166,7 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1225,13 +1225,13 @@ int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *val
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1259,7 +1259,7 @@ int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *val
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1314,13 +1314,13 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1348,7 +1348,7 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1403,13 +1403,13 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1437,7 +1437,7 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1493,13 +1493,13 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1511,7 +1511,7 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -1527,7 +1527,7 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1586,13 +1586,13 @@ int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1620,7 +1620,7 @@ int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1675,13 +1675,13 @@ int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *va
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1709,7 +1709,7 @@ int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *va
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1764,13 +1764,13 @@ int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1798,7 +1798,7 @@ int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1854,13 +1854,13 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1872,7 +1872,7 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -1888,7 +1888,7 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -1947,13 +1947,13 @@ int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -1981,7 +1981,7 @@ int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2036,13 +2036,13 @@ int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2070,7 +2070,7 @@ int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2125,13 +2125,13 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2159,7 +2159,7 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2215,13 +2215,13 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2233,7 +2233,7 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -2249,7 +2249,7 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2308,13 +2308,13 @@ int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2342,7 +2342,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2397,13 +2397,13 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2431,7 +2431,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2486,13 +2486,13 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2520,7 +2520,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2576,13 +2576,13 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2594,7 +2594,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -2610,7 +2610,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2669,13 +2669,13 @@ int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2703,7 +2703,7 @@ int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2758,13 +2758,13 @@ int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2792,7 +2792,7 @@ int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2847,13 +2847,13 @@ int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2881,7 +2881,7 @@ int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -2937,13 +2937,13 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -2955,7 +2955,7 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -2971,7 +2971,7 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3030,13 +3030,13 @@ int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3064,7 +3064,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3119,13 +3119,13 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3153,7 +3153,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3208,13 +3208,13 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3242,7 +3242,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3298,13 +3298,13 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3316,7 +3316,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -3332,7 +3332,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3391,13 +3391,13 @@ int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3425,7 +3425,7 @@ int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3480,13 +3480,13 @@ int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *va
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3514,7 +3514,7 @@ int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *va
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3569,13 +3569,13 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3603,7 +3603,7 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3659,13 +3659,13 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3677,7 +3677,7 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -3693,7 +3693,7 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3748,13 +3748,13 @@ int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3782,7 +3782,7 @@ int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3841,13 +3841,13 @@ int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3875,7 +3875,7 @@ int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -3930,13 +3930,13 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -3964,7 +3964,7 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4019,13 +4019,13 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4053,7 +4053,7 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4109,13 +4109,13 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4127,7 +4127,7 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -4143,7 +4143,7 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4202,13 +4202,13 @@ int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4236,7 +4236,7 @@ int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4291,13 +4291,13 @@ int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *valu
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4325,7 +4325,7 @@ int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *valu
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4380,13 +4380,13 @@ int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4414,7 +4414,7 @@ int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4470,13 +4470,13 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4488,7 +4488,7 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -4504,7 +4504,7 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4559,13 +4559,13 @@ int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4593,7 +4593,7 @@ int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4652,13 +4652,13 @@ int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *va
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4686,7 +4686,7 @@ int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *va
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4741,13 +4741,13 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4775,7 +4775,7 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4830,13 +4830,13 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4864,7 +4864,7 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -4920,13 +4920,13 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -4938,7 +4938,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -4954,7 +4954,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5013,13 +5013,13 @@ int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5047,7 +5047,7 @@ int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5102,13 +5102,13 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5136,7 +5136,7 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5191,13 +5191,13 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5225,7 +5225,7 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5281,13 +5281,13 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5299,7 +5299,7 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -5315,7 +5315,7 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5371,13 +5371,13 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5389,7 +5389,7 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -5405,7 +5405,7 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5460,13 +5460,13 @@ int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5494,7 +5494,7 @@ int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5549,13 +5549,13 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5583,7 +5583,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5642,13 +5642,13 @@ int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
 
         // Check do we receive 8 characters
         if (numRead == 8) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5676,7 +5676,7 @@ int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5731,13 +5731,13 @@ int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5765,7 +5765,7 @@ int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5820,13 +5820,13 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5854,7 +5854,7 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5910,13 +5910,13 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -5928,7 +5928,7 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
     }
     else if (dir == SET){
         buff_send[1] = 'S';
-        convert_number_to_char_array(*value, &buff_send[6],1, false);
+        convert_number_to_char_array(*value, &buff_send[6],3, false);
         buff_send[9] = '>';
 
         // Send it via Serial port
@@ -5944,7 +5944,7 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -5999,13 +5999,13 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6033,7 +6033,7 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6088,13 +6088,13 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
 
         // Check do we receive 11 characters
         if (numRead == 11) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6122,7 +6122,7 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
         // Check do we receive 11 characters
         if (numRead == 11) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6183,13 +6183,13 @@ int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
 
         // Check do we receive 7 characters
         if (numRead == 7) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6217,7 +6217,7 @@ int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6272,13 +6272,13 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6306,7 +6306,7 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6361,13 +6361,13 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead)-1, true) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite)-1, true) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6395,7 +6395,7 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6451,13 +6451,13 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
 
         // Check do we receive 9 characters
         if (numRead == 9) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6485,7 +6485,7 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
         // Check do we receive 9 characters
         if (numRead == 9) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6540,13 +6540,13 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6574,7 +6574,7 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -6629,13 +6629,13 @@ int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value)
 
         // Check do we receive 10 characters
         if (numRead == 10) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite)];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -6663,7 +6663,7 @@ int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value)
         // Check do we receive 10 characters
         if (numRead == 10) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 

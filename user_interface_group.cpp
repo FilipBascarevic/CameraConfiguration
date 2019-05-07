@@ -50,13 +50,13 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
 
         // Check do we receive 7 characters
         if (numRead == 7) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite )];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -74,7 +74,7 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
         // Before sending new configuration of BAUD RATE, remember
         // value of No. of Power Cycle
         int power_cycle = 0, power_cycle_old = 0;
-        Number_of_Power_Cycles(READ, &power_cycle_old);
+        //Number_of_Power_Cycles(READ, &power_cycle_old);
 
         // Send it via Serial port
         numWrite = write(buff_send, 7);
@@ -89,7 +89,7 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -101,12 +101,12 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
 
         // Wait some time, because restart is a process and it
         // it can't finished immediately
-        QThread::sleep(30);
+        //QThread::sleep(30);
 
         // Read No of Power Cycle again and compare it with
         // previous value. If it is different, it means that camera
         // is restarted and new UART configuration is set
-        Number_of_Power_Cycles(READ, &power_cycle);
+        //Number_of_Power_Cycles(READ, &power_cycle);
 
         if (power_cycle != power_cycle_old) {
             // Close serial port
@@ -181,7 +181,20 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            int value_var;
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite_var)];
+            if (check_responce_READ(var_buff_send, static_cast <int> (numWrite_var), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite_var))){
+                return -1;
+            }
+
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, &value_var, static_cast <int> (numRead-numWrite_var), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+
+            if (*value != value_var) {
+                out << "Set value isn't equal with read value in ENG mode!!!" << endl;
                 return -1;
             }
 
@@ -239,13 +252,13 @@ int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
 
         // Check do we receive 7 characters
         if (numRead == 7) {
-            char *val_buff = new char [numWrite - numRead];
+            char *val_buff = new char [static_cast <unsigned int>(numRead-numWrite )];
             // Check response
-            if (!check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
+            if (check_responce_READ(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite))){
                 return -1;
             }
             // method for conversion from array of char to number
-            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numWrite-numRead), false) < 0){
+            if (convert_char_array_to_number(val_buff, value, static_cast <int> (numRead-numWrite), false) < 0){
                 out << "Method isn't converted array of char into number!!!" << endl;
                 return -1;
             }
@@ -273,7 +286,7 @@ int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            if (check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
                 return -1;
             }
 
@@ -349,7 +362,20 @@ int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
-            if (!check_responce_SET(buff_send, static_cast <int> (numWrite), buff_receive, static_cast <int> (numRead))){
+            int value_var;
+            char *val_buff = new char [static_cast <unsigned int>(numRead - numWrite_var)];
+            if (check_responce_READ(var_buff_send, static_cast <int> (numWrite_var), buff_receive, static_cast <int> (numRead), val_buff, static_cast <int> (numRead-numWrite_var))){
+                return -1;
+            }
+
+            // method for conversion from array of char to number
+            if (convert_char_array_to_number(val_buff, &value_var, static_cast <int> (numRead-numWrite_var), false) < 0){
+                out << "Method isn't converted array of char into number!!!" << endl;
+                return -1;
+            }
+
+            if (*value != value_var) {
+                out << "Set value isn't equal with read value in ENG mode!!!" << endl;
                 return -1;
             }
 
