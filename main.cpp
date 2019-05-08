@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
     //out << "DRE/AGO Message Group" << endl;
     out << "Reading :" << endl;
 
-    //char value = 0;
-    int value = 0;
-    int result = camera.Fill_Display_on_Electronic_Zoom(SLX_III_class::READ, &value);
+    char value = 0;
+    //int value = 0;
+    int result = camera.DRE_Polarity(READ, &value, -1);
     //int result = camera.Perform_Exercise_Mechanism_Function(SLX_III_class::READ);
 
     out << "Returned value is value = " << value << endl;
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     //value = 'G';
     //value = -12345;
-    result = camera.Fill_Display_on_Electronic_Zoom(SLX_III_class::SET, &value);
+    result = camera.DRE_Polarity(SET, &value, 500);
     //result = camera.Perform_Exercise_Mechanism_Function(SLX_III_class::SET);
 
     if (!result) {
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 
     //value = 'G';
     //value = -12345;
-    result = camera.Fill_Display_on_Electronic_Zoom(SLX_III_class::ENG, &value);
+    result = camera.DRE_Polarity(ENG, &value, 500);
     //result = camera.Perform_Exercise_Mechanism_Function(SLX_III_class::ENG);
 
     if (!result) {

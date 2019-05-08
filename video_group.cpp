@@ -23,7 +23,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Display_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Display_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -46,7 +46,7 @@ int SLX_III_class::Display_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -79,7 +79,7 @@ int SLX_III_class::Display_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -114,7 +114,7 @@ int SLX_III_class::Display_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Size(DIRECTION dir, char *value)
+int SLX_III_class::Image_Size(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -137,7 +137,7 @@ int SLX_III_class::Image_Size(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -164,7 +164,7 @@ int SLX_III_class::Image_Size(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -212,7 +212,7 @@ int SLX_III_class::Image_Size(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -251,7 +251,7 @@ int SLX_III_class::Image_Size(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Display_Orientation(DIRECTION dir, int *value)
+int SLX_III_class::Display_Orientation(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -274,7 +274,7 @@ int SLX_III_class::Display_Orientation(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -307,7 +307,7 @@ int SLX_III_class::Display_Orientation(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -356,7 +356,7 @@ int SLX_III_class::Display_Orientation(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -399,7 +399,7 @@ int SLX_III_class::Display_Orientation(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Freeze_Frame(DIRECTION dir, int *value)
+int SLX_III_class::Freeze_Frame(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -422,7 +422,7 @@ int SLX_III_class::Freeze_Frame(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -455,7 +455,7 @@ int SLX_III_class::Freeze_Frame(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -489,7 +489,7 @@ int SLX_III_class::Freeze_Frame(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::HD_SDI_Video_Output(DIRECTION dir, int *value)
+int SLX_III_class::HD_SDI_Video_Output(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -512,7 +512,7 @@ int SLX_III_class::HD_SDI_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -545,7 +545,7 @@ int SLX_III_class::HD_SDI_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -594,7 +594,7 @@ int SLX_III_class::HD_SDI_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -636,7 +636,7 @@ int SLX_III_class::HD_SDI_Video_Output(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Analogue_Video_Output(DIRECTION dir, int *value)
+int SLX_III_class::Analogue_Video_Output(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -659,7 +659,7 @@ int SLX_III_class::Analogue_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -692,7 +692,7 @@ int SLX_III_class::Analogue_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -741,7 +741,7 @@ int SLX_III_class::Analogue_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -784,7 +784,7 @@ int SLX_III_class::Analogue_Video_Output(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Composite_Sync_on_Green(DIRECTION dir, int *value)
+int SLX_III_class::Composite_Sync_on_Green(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -807,7 +807,7 @@ int SLX_III_class::Composite_Sync_on_Green(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -840,7 +840,7 @@ int SLX_III_class::Composite_Sync_on_Green(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -889,7 +889,7 @@ int SLX_III_class::Composite_Sync_on_Green(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -932,7 +932,7 @@ int SLX_III_class::Composite_Sync_on_Green(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::ONVIF_Video_Output(DIRECTION dir, int *value)
+int SLX_III_class::ONVIF_Video_Output(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -955,7 +955,7 @@ int SLX_III_class::ONVIF_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -988,7 +988,7 @@ int SLX_III_class::ONVIF_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -1037,7 +1037,7 @@ int SLX_III_class::ONVIF_Video_Output(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -1080,7 +1080,7 @@ int SLX_III_class::ONVIF_Video_Output(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Electronic_Zoom_Ratio(DIRECTION dir, int *value)
+int SLX_III_class::Electronic_Zoom_Ratio(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1104,7 +1104,7 @@ int SLX_III_class::Electronic_Zoom_Ratio(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1137,7 +1137,7 @@ int SLX_III_class::Electronic_Zoom_Ratio(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1169,7 +1169,7 @@ int SLX_III_class::Electronic_Zoom_Ratio(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Electronic_Zoom_Pan_X(DIRECTION dir, int *value)
+int SLX_III_class::Electronic_Zoom_Pan_X(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1193,7 +1193,7 @@ int SLX_III_class::Electronic_Zoom_Pan_X(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1226,7 +1226,7 @@ int SLX_III_class::Electronic_Zoom_Pan_X(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1258,7 +1258,7 @@ int SLX_III_class::Electronic_Zoom_Pan_X(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Electronic_Zoom_Pan_Y(DIRECTION dir, int *value)
+int SLX_III_class::Electronic_Zoom_Pan_Y(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1282,7 +1282,7 @@ int SLX_III_class::Electronic_Zoom_Pan_Y(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1315,7 +1315,7 @@ int SLX_III_class::Electronic_Zoom_Pan_Y(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1349,7 +1349,7 @@ int SLX_III_class::Electronic_Zoom_Pan_Y(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Electronic_Zoom_Type(DIRECTION dir, int *value)
+int SLX_III_class::Electronic_Zoom_Type(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -1373,7 +1373,7 @@ int SLX_III_class::Electronic_Zoom_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1406,7 +1406,7 @@ int SLX_III_class::Electronic_Zoom_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1456,7 +1456,7 @@ int SLX_III_class::Electronic_Zoom_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -1499,7 +1499,7 @@ int SLX_III_class::Electronic_Zoom_Type(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Fill_Display_on_Electronic_Zoom(DIRECTION dir, int *value)
+int SLX_III_class::Fill_Display_on_Electronic_Zoom(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -1523,7 +1523,7 @@ int SLX_III_class::Fill_Display_on_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1556,7 +1556,7 @@ int SLX_III_class::Fill_Display_on_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1606,7 +1606,7 @@ int SLX_III_class::Fill_Display_on_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response

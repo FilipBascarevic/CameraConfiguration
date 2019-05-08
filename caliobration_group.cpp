@@ -19,7 +19,7 @@
      *              * 0 - External Calibration (Offset Update Only)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Perform_Calibration(DIRECTION dir, int *value)
+int SLX_III_class::Perform_Calibration(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -44,7 +44,7 @@ int SLX_III_class::Perform_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -79,7 +79,7 @@ int SLX_III_class::Perform_Calibration(DIRECTION dir, int *value)
      *              * 1 - Enabled
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
+int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -102,7 +102,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -135,7 +135,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -183,7 +183,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -224,7 +224,7 @@ int SLX_III_class::Automatic_Calibration(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Stare_Time(DIRECTION dir, int *value)
+int SLX_III_class::Stare_Time(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -248,7 +248,7 @@ int SLX_III_class::Stare_Time(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -281,7 +281,7 @@ int SLX_III_class::Stare_Time(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -312,7 +312,7 @@ int SLX_III_class::Stare_Time(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Integration_Capacitors(DIRECTION dir, int *value)
+int SLX_III_class::Integration_Capacitors(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -336,7 +336,7 @@ int SLX_III_class::Integration_Capacitors(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -369,7 +369,7 @@ int SLX_III_class::Integration_Capacitors(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -400,7 +400,7 @@ int SLX_III_class::Integration_Capacitors(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Select_Calibration_Table(DIRECTION dir, int *value)
+int SLX_III_class::Select_Calibration_Table(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -423,7 +423,7 @@ int SLX_III_class::Select_Calibration_Table(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -456,7 +456,7 @@ int SLX_III_class::Select_Calibration_Table(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -488,7 +488,7 @@ int SLX_III_class::Select_Calibration_Table(DIRECTION dir, int *value)
      *              * 1 - Enabled
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
+int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -511,7 +511,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -544,7 +544,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -592,7 +592,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
         // Check do we receive 6 characters
         if (numRead == 6) {
             // Check response
@@ -632,7 +632,7 @@ int SLX_III_class::Enable_Non_Uniformity_Correction(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Reject_Last_Calibration(DIRECTION dir)
+int SLX_III_class::Reject_Last_Calibration(DIRECTION dir, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[5], buff_receive[5];
@@ -656,7 +656,7 @@ int SLX_III_class::Reject_Last_Calibration(DIRECTION dir)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 5);
+        numRead = read(buff_receive, 5, timeOut);
 
         // Check do we receive 5 characters
         if (numRead == 5) {
@@ -693,7 +693,7 @@ int SLX_III_class::Reject_Last_Calibration(DIRECTION dir)
      *              * 1 - Enabled
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
+int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -717,7 +717,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -750,7 +750,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -799,7 +799,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -842,7 +842,7 @@ int SLX_III_class::Dead_Pixel_Replacement(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Number_of_Samples(DIRECTION dir, int *value)
+int SLX_III_class::Number_of_Samples(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -866,7 +866,7 @@ int SLX_III_class::Number_of_Samples(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -899,7 +899,7 @@ int SLX_III_class::Number_of_Samples(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -930,7 +930,7 @@ int SLX_III_class::Number_of_Samples(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Low_Target_Well_Fill(DIRECTION dir, int *value)
+int SLX_III_class::Low_Target_Well_Fill(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -954,7 +954,7 @@ int SLX_III_class::Low_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -987,7 +987,7 @@ int SLX_III_class::Low_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1018,7 +1018,7 @@ int SLX_III_class::Low_Target_Well_Fill(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mid_Target_Well_Fill(DIRECTION dir, int *value)
+int SLX_III_class::Mid_Target_Well_Fill(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1042,7 +1042,7 @@ int SLX_III_class::Mid_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1075,7 +1075,7 @@ int SLX_III_class::Mid_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1106,7 +1106,7 @@ int SLX_III_class::Mid_Target_Well_Fill(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::High_Target_Well_Fill(DIRECTION dir, int *value)
+int SLX_III_class::High_Target_Well_Fill(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1130,7 +1130,7 @@ int SLX_III_class::High_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1163,7 +1163,7 @@ int SLX_III_class::High_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1197,7 +1197,7 @@ int SLX_III_class::High_Target_Well_Fill(DIRECTION dir, int *value)
      *              * W - Well Fills Optimised
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Optimisation_Method(DIRECTION dir, char *value)
+int SLX_III_class::Optimisation_Method(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -1222,7 +1222,7 @@ int SLX_III_class::Optimisation_Method(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1249,7 +1249,7 @@ int SLX_III_class::Optimisation_Method(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1280,7 +1280,7 @@ int SLX_III_class::Optimisation_Method(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Optimisation_Target_Well_Fill(DIRECTION dir, int *value)
+int SLX_III_class::Optimisation_Target_Well_Fill(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1304,7 +1304,7 @@ int SLX_III_class::Optimisation_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1337,7 +1337,7 @@ int SLX_III_class::Optimisation_Target_Well_Fill(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1368,7 +1368,7 @@ int SLX_III_class::Optimisation_Target_Well_Fill(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Optimisation_Maximum_Stare_Time(DIRECTION dir, int *value)
+int SLX_III_class::Optimisation_Maximum_Stare_Time(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -1392,7 +1392,7 @@ int SLX_III_class::Optimisation_Maximum_Stare_Time(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1425,7 +1425,7 @@ int SLX_III_class::Optimisation_Maximum_Stare_Time(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1456,7 +1456,7 @@ int SLX_III_class::Optimisation_Maximum_Stare_Time(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Store_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
+int SLX_III_class::Store_Calibration_Table_to_NVRAM(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -1485,7 +1485,7 @@ int SLX_III_class::Store_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1531,7 +1531,7 @@ int SLX_III_class::Store_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
+int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -1560,7 +1560,7 @@ int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1608,7 +1608,7 @@ int SLX_III_class::Restore_Calibration_Table_to_NVRAM(DIRECTION dir, int *value)
      *              * R - Restore In Progress
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value)
+int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -1633,7 +1633,7 @@ int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -1665,7 +1665,7 @@ int SLX_III_class::Store_or_Restore_NVRAM_Progress(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {

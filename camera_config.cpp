@@ -87,7 +87,7 @@ bool SLX_III_class::UART_Auto_Detect_Configuration(QString serialPortName)
         // Try reading of UART register. If reading is successfull, this is correct configuration and break loop.
         // If it is not, increase counter/counters and try other configuration.
         int read_value;
-        if (Configure_Baud_Rate(READ, &read_value) == 0){
+        if (Configure_Baud_Rate(READ, &read_value, 500) == 0){
             // Reading is successfull. We found configuration.
             // Break while loop.
             // UART configuration user can check in a class fields

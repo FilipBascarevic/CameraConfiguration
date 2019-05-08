@@ -19,7 +19,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
+int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -44,7 +44,7 @@ int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -77,7 +77,7 @@ int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -109,7 +109,7 @@ int SLX_III_class::DRE_Overlay_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
+int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -134,7 +134,7 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -167,7 +167,7 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -200,7 +200,7 @@ int SLX_III_class::DRE_Overlay_Colour(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
+int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -225,7 +225,7 @@ int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -258,7 +258,7 @@ int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -290,7 +290,7 @@ int SLX_III_class::Autofocus_Overlay_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
+int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -315,7 +315,7 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -348,7 +348,7 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -381,7 +381,7 @@ int SLX_III_class::Autofocus_Overlay_Colour(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
+int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -406,7 +406,7 @@ int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -439,7 +439,7 @@ int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -474,7 +474,7 @@ int SLX_III_class::Tracker_Overlay_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -499,7 +499,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -532,7 +532,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -563,7 +563,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -588,7 +588,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -621,7 +621,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -652,7 +652,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -677,7 +677,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -710,7 +710,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -742,7 +742,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -767,7 +767,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -800,7 +800,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -835,7 +835,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -860,7 +860,7 @@ int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -893,7 +893,7 @@ int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -924,7 +924,7 @@ int SLX_III_class::Text_Item_Enable_Camera_Temperature(DIRECTION dir, int *value
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -949,7 +949,7 @@ int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int 
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -982,7 +982,7 @@ int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int 
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -1013,7 +1013,7 @@ int SLX_III_class::Text_Item_start_column_Camera_Temperature(DIRECTION dir, int 
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -1038,7 +1038,7 @@ int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1071,7 +1071,7 @@ int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -1103,7 +1103,7 @@ int SLX_III_class::Text_Item_start_row_Camera_Temperature(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1128,7 +1128,7 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1161,7 +1161,7 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1196,7 +1196,7 @@ int SLX_III_class::Text_Item_Colour_Camera_Temperature(DIRECTION dir, int *value
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1221,7 +1221,7 @@ int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *val
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1254,7 +1254,7 @@ int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *val
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1285,7 +1285,7 @@ int SLX_III_class::Text_Item_Enable_Detector_Temperature(DIRECTION dir, int *val
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -1310,7 +1310,7 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1343,7 +1343,7 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1374,7 +1374,7 @@ int SLX_III_class::Text_Item_start_column_Detector_Temperature(DIRECTION dir, in
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -1399,7 +1399,7 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1432,7 +1432,7 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1464,7 +1464,7 @@ int SLX_III_class::Text_Item_start_row_Detector_Temperature(DIRECTION dir, int *
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1489,7 +1489,7 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1522,7 +1522,7 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1557,7 +1557,7 @@ int SLX_III_class::Text_Item_Colour_Detector_Temperature(DIRECTION dir, int *val
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1582,7 +1582,7 @@ int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1615,7 +1615,7 @@ int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1646,7 +1646,7 @@ int SLX_III_class::Text_Item_Enable_Electronic_Zoom(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -1671,7 +1671,7 @@ int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1704,7 +1704,7 @@ int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -1735,7 +1735,7 @@ int SLX_III_class::Text_Item_start_column_Electronic_Zoom(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -1760,7 +1760,7 @@ int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -1793,7 +1793,7 @@ int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -1825,7 +1825,7 @@ int SLX_III_class::Text_Item_start_row_Electronic_Zoom(DIRECTION dir, int *value
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1850,7 +1850,7 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1883,7 +1883,7 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1918,7 +1918,7 @@ int SLX_III_class::Text_Item_Colour_Electronic_Zoom(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1943,7 +1943,7 @@ int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1976,7 +1976,7 @@ int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -2007,7 +2007,7 @@ int SLX_III_class::Text_Item_Enable_Focus(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2032,7 +2032,7 @@ int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2065,7 +2065,7 @@ int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -2096,7 +2096,7 @@ int SLX_III_class::Text_Item_start_column_Focus(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2121,7 +2121,7 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2154,7 +2154,7 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2186,7 +2186,7 @@ int SLX_III_class::Text_Item_start_row_Focus(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -2211,7 +2211,7 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -2244,7 +2244,7 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -2279,7 +2279,7 @@ int SLX_III_class::Text_Item_Colour_Focus(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -2304,7 +2304,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -2337,7 +2337,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -2368,7 +2368,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Gain(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2393,7 +2393,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2426,7 +2426,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2457,7 +2457,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Gain(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2482,7 +2482,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2515,7 +2515,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2547,7 +2547,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Gain(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -2572,7 +2572,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -2605,7 +2605,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -2640,7 +2640,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Gain(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -2665,7 +2665,7 @@ int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -2698,7 +2698,7 @@ int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -2729,7 +2729,7 @@ int SLX_III_class::Text_Item_Enable_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2754,7 +2754,7 @@ int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2787,7 +2787,7 @@ int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -2818,7 +2818,7 @@ int SLX_III_class::Text_Item_start_column_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2843,7 +2843,7 @@ int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2876,7 +2876,7 @@ int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -2908,7 +2908,7 @@ int SLX_III_class::Text_Item_start_row_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -2933,7 +2933,7 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -2966,7 +2966,7 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -3001,7 +3001,7 @@ int SLX_III_class::Text_Item_Colour_Mode(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -3026,7 +3026,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -3059,7 +3059,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -3090,7 +3090,7 @@ int SLX_III_class::Text_Item_Enable_DRE_Offset(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -3115,7 +3115,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3148,7 +3148,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3179,7 +3179,7 @@ int SLX_III_class::Text_Item_start_column_DRE_Offset(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -3204,7 +3204,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3237,7 +3237,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3269,7 +3269,7 @@ int SLX_III_class::Text_Item_start_row_DRE_Offset(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -3294,7 +3294,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -3327,7 +3327,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -3362,7 +3362,7 @@ int SLX_III_class::Text_Item_Colour_DRE_Offset(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -3387,7 +3387,7 @@ int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -3420,7 +3420,7 @@ int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -3451,7 +3451,7 @@ int SLX_III_class::Text_Item_Enable_Pitch_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -3476,7 +3476,7 @@ int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3509,7 +3509,7 @@ int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -3540,7 +3540,7 @@ int SLX_III_class::Text_Item_start_column_Pitch_Indicator(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -3565,7 +3565,7 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3598,7 +3598,7 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3630,7 +3630,7 @@ int SLX_III_class::Text_Item_start_row_Pitch_Indicator(DIRECTION dir, int *value
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -3655,7 +3655,7 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -3688,7 +3688,7 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -3719,7 +3719,7 @@ int SLX_III_class::Text_Item_Colour_Pitch_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -3744,7 +3744,7 @@ int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3777,7 +3777,7 @@ int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3812,7 +3812,7 @@ int SLX_III_class::Text_Item_Value_Pitch_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -3837,7 +3837,7 @@ int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -3870,7 +3870,7 @@ int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -3901,7 +3901,7 @@ int SLX_III_class::Text_Item_Enable_Status(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -3926,7 +3926,7 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3959,7 +3959,7 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -3990,7 +3990,7 @@ int SLX_III_class::Text_Item_start_column_Status(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -4015,7 +4015,7 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4048,7 +4048,7 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4080,7 +4080,7 @@ int SLX_III_class::Text_Item_start_row_Status(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -4105,7 +4105,7 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -4138,7 +4138,7 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -4173,7 +4173,7 @@ int SLX_III_class::Text_Item_Colour_Status(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -4198,7 +4198,7 @@ int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -4231,7 +4231,7 @@ int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -4262,7 +4262,7 @@ int SLX_III_class::Text_Item_Enable_Yaw_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -4287,7 +4287,7 @@ int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *valu
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4320,7 +4320,7 @@ int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *valu
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -4351,7 +4351,7 @@ int SLX_III_class::Text_Item_start_column_Yaw_Indicator(DIRECTION dir, int *valu
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -4376,7 +4376,7 @@ int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4409,7 +4409,7 @@ int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -4441,7 +4441,7 @@ int SLX_III_class::Text_Item_start_row_Yaw_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -4466,7 +4466,7 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -4499,7 +4499,7 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -4530,7 +4530,7 @@ int SLX_III_class::Text_Item_Colour_Yaw_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -4555,7 +4555,7 @@ int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4588,7 +4588,7 @@ int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -4623,7 +4623,7 @@ int SLX_III_class::Text_Item_Value_Yaw_Indicator(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
-int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -4648,7 +4648,7 @@ int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -4681,7 +4681,7 @@ int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -4712,7 +4712,7 @@ int SLX_III_class::Text_Item_Enable_Optical_Field_of_View(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -4737,7 +4737,7 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4770,7 +4770,7 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4801,7 +4801,7 @@ int SLX_III_class::Text_Item_start_column_Optical_Field_of_View(DIRECTION dir, i
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -4826,7 +4826,7 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4859,7 +4859,7 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -4891,7 +4891,7 @@ int SLX_III_class::Text_Item_start_row_Optical_Field_of_View(DIRECTION dir, int 
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *value)
+int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -4916,7 +4916,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -4949,7 +4949,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -4984,7 +4984,7 @@ int SLX_III_class::Text_Item_Colour_Optical_Field_of_View(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
+int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -5009,7 +5009,7 @@ int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -5042,7 +5042,7 @@ int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -5073,7 +5073,7 @@ int SLX_III_class::DRE_Mimic_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5098,7 +5098,7 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5131,7 +5131,7 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5162,7 +5162,7 @@ int SLX_III_class::Mimic_start_column_DRE(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5187,7 +5187,7 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5220,7 +5220,7 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5252,7 +5252,7 @@ int SLX_III_class::Mimic_start_row_DRE(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -5277,7 +5277,7 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -5310,7 +5310,7 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -5342,7 +5342,7 @@ int SLX_III_class::Mimic_Foreground_Colour_DRE(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -5367,7 +5367,7 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -5400,7 +5400,7 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -5431,7 +5431,7 @@ int SLX_III_class::Mimic_Background_Colour_DRE(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5456,7 +5456,7 @@ int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5489,7 +5489,7 @@ int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -5520,7 +5520,7 @@ int SLX_III_class::Mimic_Width_DRE(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5545,7 +5545,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5578,7 +5578,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -5613,7 +5613,7 @@ int SLX_III_class::Mimic_Height_DRE(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
+int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -5638,7 +5638,7 @@ int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -5671,7 +5671,7 @@ int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -5702,7 +5702,7 @@ int SLX_III_class::Target_Size_Mimic_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5727,7 +5727,7 @@ int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5760,7 +5760,7 @@ int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 11) {
@@ -5791,7 +5791,7 @@ int SLX_III_class::Mimic_start_column_Target_Size(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5816,7 +5816,7 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5849,7 +5849,7 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -5881,7 +5881,7 @@ int SLX_III_class::Mimic_start_row_Target_Size(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -5906,7 +5906,7 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -5939,7 +5939,7 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -5970,7 +5970,7 @@ int SLX_III_class::Mimic_Foreground_Colour_Target_Size(DIRECTION dir, int *value
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -5995,7 +5995,7 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -6028,7 +6028,7 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -6059,7 +6059,7 @@ int SLX_III_class::Mimic_Width_Target_Size(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
+int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -6084,7 +6084,7 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -6117,7 +6117,7 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -6155,7 +6155,7 @@ int SLX_III_class::Mimic_Height_Target_Size(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
+int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -6179,7 +6179,7 @@ int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -6212,7 +6212,7 @@ int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -6244,7 +6244,7 @@ int SLX_III_class::Boresight_Marker_Type(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
+int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -6268,7 +6268,7 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6301,7 +6301,7 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6333,7 +6333,7 @@ int SLX_III_class::Boresight_Marker_Column(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
+int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -6357,7 +6357,7 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6390,7 +6390,7 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6423,7 +6423,7 @@ int SLX_III_class::Boresight_Marker_Row(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
+int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -6447,7 +6447,7 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -6480,7 +6480,7 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -6512,7 +6512,7 @@ int SLX_III_class::Boresight_Marker_Colour(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
+int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -6536,7 +6536,7 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6569,7 +6569,7 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6601,7 +6601,7 @@ int SLX_III_class::Boresight_Marker_Width(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value)
+int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -6625,7 +6625,7 @@ int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -6658,7 +6658,7 @@ int SLX_III_class::Boresight_Marker_Height(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {

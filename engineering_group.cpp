@@ -18,7 +18,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value)
+int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -42,7 +42,7 @@ int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -75,7 +75,7 @@ int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -124,7 +124,7 @@ int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -164,7 +164,7 @@ int SLX_III_class::Use_Peltier_During_Calibration(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::TEC_Stable(DIRECTION dir)
+int SLX_III_class::TEC_Stable(DIRECTION dir, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -192,7 +192,7 @@ int SLX_III_class::TEC_Stable(DIRECTION dir)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -240,7 +240,7 @@ int SLX_III_class::TEC_Stable(DIRECTION dir)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Move_Paddle(DIRECTION dir, char *value)
+int SLX_III_class::Move_Paddle(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -269,7 +269,7 @@ int SLX_III_class::Move_Paddle(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {

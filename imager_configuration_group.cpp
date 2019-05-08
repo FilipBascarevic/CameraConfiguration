@@ -17,7 +17,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Imager_Identity_Part_1(DIRECTION dir, int *value)
+int SLX_III_class::Imager_Identity_Part_1(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -41,7 +41,7 @@ int SLX_III_class::Imager_Identity_Part_1(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -78,7 +78,7 @@ int SLX_III_class::Imager_Identity_Part_1(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -111,7 +111,7 @@ int SLX_III_class::Imager_Identity_Part_1(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Imager_Identity_Part_2(DIRECTION dir, int *value)
+int SLX_III_class::Imager_Identity_Part_2(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -135,7 +135,7 @@ int SLX_III_class::Imager_Identity_Part_2(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -172,7 +172,7 @@ int SLX_III_class::Imager_Identity_Part_2(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -206,7 +206,7 @@ int SLX_III_class::Imager_Identity_Part_2(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Firmware_Version(DIRECTION dir, int *value)
+int SLX_III_class::Firmware_Version(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -229,7 +229,7 @@ int SLX_III_class::Firmware_Version(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -269,7 +269,7 @@ int SLX_III_class::Firmware_Version(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Imager_Serial_Number(DIRECTION dir, int *value)
+int SLX_III_class::Imager_Serial_Number(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -293,7 +293,7 @@ int SLX_III_class::Imager_Serial_Number(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -330,7 +330,7 @@ int SLX_III_class::Imager_Serial_Number(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -362,7 +362,7 @@ int SLX_III_class::Imager_Serial_Number(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Processing_Board_Serial_Number(DIRECTION dir, int *value)
+int SLX_III_class::Processing_Board_Serial_Number(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -386,7 +386,7 @@ int SLX_III_class::Processing_Board_Serial_Number(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -423,7 +423,7 @@ int SLX_III_class::Processing_Board_Serial_Number(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -455,7 +455,7 @@ int SLX_III_class::Processing_Board_Serial_Number(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Lens_Board_Serial_Number(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Board_Serial_Number(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -479,7 +479,7 @@ int SLX_III_class::Lens_Board_Serial_Number(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -521,7 +521,7 @@ int SLX_III_class::Lens_Board_Serial_Number(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Turbulence_Mitigation_Available(DIRECTION dir, int *value)
+int SLX_III_class::Turbulence_Mitigation_Available(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -544,7 +544,7 @@ int SLX_III_class::Turbulence_Mitigation_Available(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -588,7 +588,7 @@ int SLX_III_class::Turbulence_Mitigation_Available(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Detector_Waveband_1(DIRECTION dir, char *value)
+int SLX_III_class::Detector_Waveband_1(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -612,7 +612,7 @@ int SLX_III_class::Detector_Waveband_1(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -712,7 +712,7 @@ int SLX_III_class::Default_Configuration(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Lens_Type_Fitted(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Type_Fitted(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -736,7 +736,7 @@ int SLX_III_class::Lens_Type_Fitted(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -776,7 +776,7 @@ int SLX_III_class::Lens_Type_Fitted(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Lens_EFL_Widest_FoV(DIRECTION dir, int *value)
+int SLX_III_class::Lens_EFL_Widest_FoV(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -800,7 +800,7 @@ int SLX_III_class::Lens_EFL_Widest_FoV(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -840,7 +840,7 @@ int SLX_III_class::Lens_EFL_Widest_FoV(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Lens_EFL_Narrowest_FoV(DIRECTION dir, int *value)
+int SLX_III_class::Lens_EFL_Narrowest_FoV(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -864,7 +864,7 @@ int SLX_III_class::Lens_EFL_Narrowest_FoV(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {

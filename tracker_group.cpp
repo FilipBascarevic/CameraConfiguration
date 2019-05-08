@@ -19,7 +19,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Tracker_Mode(DIRECTION dir, char *value)
+int SLX_III_class::Tracker_Mode(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -42,7 +42,7 @@ int SLX_III_class::Tracker_Mode(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -71,7 +71,7 @@ int SLX_III_class::Tracker_Mode(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -104,7 +104,7 @@ int SLX_III_class::Tracker_Mode(DIRECTION dir, char *value)
      *              * 2 - Correlator
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Tracker_Type(DIRECTION dir, int *value)
+int SLX_III_class::Tracker_Type(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -127,7 +127,7 @@ int SLX_III_class::Tracker_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -158,7 +158,7 @@ int SLX_III_class::Tracker_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {
@@ -188,7 +188,7 @@ int SLX_III_class::Tracker_Type(DIRECTION dir, int *value)
      * @param/return value pointer can be 4 to 255
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Centroid_Target_Window_Size(DIRECTION dir, int *value)
+int SLX_III_class::Centroid_Target_Window_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -212,7 +212,7 @@ int SLX_III_class::Centroid_Target_Window_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -245,7 +245,7 @@ int SLX_III_class::Centroid_Target_Window_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -275,7 +275,7 @@ int SLX_III_class::Centroid_Target_Window_Size(DIRECTION dir, int *value)
      * @param/return value pointer can be 4 to 64
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Correlator_Target_Window_Size(DIRECTION dir, int *value)
+int SLX_III_class::Correlator_Target_Window_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -299,7 +299,7 @@ int SLX_III_class::Correlator_Target_Window_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -332,7 +332,7 @@ int SLX_III_class::Correlator_Target_Window_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -362,7 +362,7 @@ int SLX_III_class::Correlator_Target_Window_Size(DIRECTION dir, int *value)
      * @param/return value pointer can be 4 to 64
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Correlator_Scan_Area_Size(DIRECTION dir, int *value)
+int SLX_III_class::Correlator_Scan_Area_Size(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -386,7 +386,7 @@ int SLX_III_class::Correlator_Scan_Area_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -419,7 +419,7 @@ int SLX_III_class::Correlator_Scan_Area_Size(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -450,7 +450,7 @@ int SLX_III_class::Correlator_Scan_Area_Size(DIRECTION dir, int *value)
      * @param/return value pointer can be 0 to 255
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Correlator_Auto_acquire_Rate(DIRECTION dir, int *value)
+int SLX_III_class::Correlator_Auto_acquire_Rate(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -474,7 +474,7 @@ int SLX_III_class::Correlator_Auto_acquire_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -507,7 +507,7 @@ int SLX_III_class::Correlator_Auto_acquire_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -539,7 +539,7 @@ int SLX_III_class::Correlator_Auto_acquire_Rate(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Target_Position_X(DIRECTION dir, int *value)
+int SLX_III_class::Target_Position_X(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -563,7 +563,7 @@ int SLX_III_class::Target_Position_X(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -596,7 +596,7 @@ int SLX_III_class::Target_Position_X(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -628,7 +628,7 @@ int SLX_III_class::Target_Position_X(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Target_Position_Y(DIRECTION dir, int *value)
+int SLX_III_class::Target_Position_Y(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -652,7 +652,7 @@ int SLX_III_class::Target_Position_Y(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -685,7 +685,7 @@ int SLX_III_class::Target_Position_Y(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {

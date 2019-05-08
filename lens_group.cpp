@@ -19,7 +19,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Change_Zoom(DIRECTION dir, char *value)
+int SLX_III_class::Change_Zoom(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -45,7 +45,7 @@ int SLX_III_class::Change_Zoom(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -81,7 +81,7 @@ int SLX_III_class::Change_Zoom(DIRECTION dir, char *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Zoom_Position_EFL(DIRECTION dir, int *value)
+int SLX_III_class::Zoom_Position_EFL(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -105,7 +105,7 @@ int SLX_III_class::Zoom_Position_EFL(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -138,7 +138,7 @@ int SLX_III_class::Zoom_Position_EFL(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -170,7 +170,7 @@ int SLX_III_class::Zoom_Position_EFL(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Zoom_Speed(DIRECTION dir, int *value)
+int SLX_III_class::Zoom_Speed(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -194,7 +194,7 @@ int SLX_III_class::Zoom_Speed(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -227,7 +227,7 @@ int SLX_III_class::Zoom_Speed(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -263,7 +263,7 @@ int SLX_III_class::Zoom_Speed(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Change_Focus(DIRECTION dir, char *value)
+int SLX_III_class::Change_Focus(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -289,7 +289,7 @@ int SLX_III_class::Change_Focus(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -325,7 +325,7 @@ int SLX_III_class::Change_Focus(DIRECTION dir, char *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Focus_Position(DIRECTION dir, int *value)
+int SLX_III_class::Focus_Position(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[13], buff_receive[13];
@@ -349,7 +349,7 @@ int SLX_III_class::Focus_Position(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 13);
+        numRead = read(buff_receive, 13, timeOut);
 
         // Check do we receive 13 characters
         if (numRead == 13) {
@@ -382,7 +382,7 @@ int SLX_III_class::Focus_Position(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 13);
+        numRead = read(buff_receive, 13, timeOut);
 
         // Check do we receive 13 characters
         if (numRead == 13) {
@@ -414,7 +414,7 @@ int SLX_III_class::Focus_Position(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Focus_Speed(DIRECTION dir, int *value)
+int SLX_III_class::Focus_Speed(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -438,7 +438,7 @@ int SLX_III_class::Focus_Speed(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -471,7 +471,7 @@ int SLX_III_class::Focus_Speed(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -504,7 +504,7 @@ int SLX_III_class::Focus_Speed(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Focus_ramping_beyond_infinity(DIRECTION dir, int *value)
+int SLX_III_class::Focus_ramping_beyond_infinity(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -528,7 +528,7 @@ int SLX_III_class::Focus_ramping_beyond_infinity(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -561,7 +561,7 @@ int SLX_III_class::Focus_ramping_beyond_infinity(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -610,7 +610,7 @@ int SLX_III_class::Focus_ramping_beyond_infinity(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -655,7 +655,7 @@ int SLX_III_class::Focus_ramping_beyond_infinity(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Optimise_Focus_Distance(DIRECTION dir, int *value)
+int SLX_III_class::Optimise_Focus_Distance(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -679,7 +679,7 @@ int SLX_III_class::Optimise_Focus_Distance(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -718,7 +718,7 @@ int SLX_III_class::Optimise_Focus_Distance(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -750,7 +750,7 @@ int SLX_III_class::Optimise_Focus_Distance(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Autofocus_Nearest_Position(DIRECTION dir, int *value)
+int SLX_III_class::Autofocus_Nearest_Position(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -774,7 +774,7 @@ int SLX_III_class::Autofocus_Nearest_Position(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -807,7 +807,7 @@ int SLX_III_class::Autofocus_Nearest_Position(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -839,7 +839,7 @@ int SLX_III_class::Autofocus_Nearest_Position(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value)
+int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -863,7 +863,7 @@ int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -896,7 +896,7 @@ int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -930,7 +930,7 @@ int SLX_III_class::Autofocus_Furthest_Position(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Elapsed_Time_Indicator(DIRECTION dir, int *value)
+int SLX_III_class::Elapsed_Time_Indicator(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -954,7 +954,7 @@ int SLX_III_class::Elapsed_Time_Indicator(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -995,7 +995,7 @@ int SLX_III_class::Elapsed_Time_Indicator(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Number_of_Power_Cycles(DIRECTION dir, int *value)
+int SLX_III_class::Number_of_Power_Cycles(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1019,7 +1019,7 @@ int SLX_III_class::Number_of_Power_Cycles(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1060,7 +1060,7 @@ int SLX_III_class::Number_of_Power_Cycles(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
      */
 
-int SLX_III_class::Humidity_Sensor(DIRECTION dir, int *value)
+int SLX_III_class::Humidity_Sensor(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -1084,7 +1084,7 @@ int SLX_III_class::Humidity_Sensor(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -1133,7 +1133,7 @@ int SLX_III_class::Humidity_Sensor(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_BITE(DIRECTION dir, int *value)
+int SLX_III_class::Lens_BITE(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1157,7 +1157,7 @@ int SLX_III_class::Lens_BITE(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1200,7 +1200,7 @@ int SLX_III_class::Lens_BITE(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Zoom_Narrow_Hard_Stop_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Zoom_Narrow_Hard_Stop_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1224,7 +1224,7 @@ int SLX_III_class::Zoom_Narrow_Hard_Stop_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1265,7 +1265,7 @@ int SLX_III_class::Zoom_Narrow_Hard_Stop_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Zoom_Wide_Hard_Stop_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Zoom_Wide_Hard_Stop_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1289,7 +1289,7 @@ int SLX_III_class::Zoom_Wide_Hard_Stop_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1330,7 +1330,7 @@ int SLX_III_class::Zoom_Wide_Hard_Stop_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Focus_Far_Hard_Stop_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Focus_Far_Hard_Stop_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -1354,7 +1354,7 @@ int SLX_III_class::Focus_Far_Hard_Stop_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -1395,7 +1395,7 @@ int SLX_III_class::Focus_Far_Hard_Stop_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Focus_Near_Hard_Stop_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Focus_Near_Hard_Stop_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -1419,7 +1419,7 @@ int SLX_III_class::Focus_Near_Hard_Stop_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -1460,7 +1460,7 @@ int SLX_III_class::Focus_Near_Hard_Stop_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Focus_Optocouple_Sensor_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Focus_Optocouple_Sensor_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -1484,7 +1484,7 @@ int SLX_III_class::Focus_Optocouple_Sensor_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -1525,7 +1525,7 @@ int SLX_III_class::Focus_Optocouple_Sensor_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Zoom_Optical_Reference_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Zoom_Optical_Reference_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -1549,7 +1549,7 @@ int SLX_III_class::Zoom_Optical_Reference_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -1590,7 +1590,7 @@ int SLX_III_class::Zoom_Optical_Reference_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Focus_Optical_Reference_Datum(DIRECTION dir, int *value)
+int SLX_III_class::Focus_Optical_Reference_Datum(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -1614,7 +1614,7 @@ int SLX_III_class::Focus_Optical_Reference_Datum(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -1657,7 +1657,7 @@ int SLX_III_class::Focus_Optical_Reference_Datum(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Local_Board_Temperature(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Local_Board_Temperature(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1681,7 +1681,7 @@ int SLX_III_class::Lens_Local_Board_Temperature(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1722,7 +1722,7 @@ int SLX_III_class::Lens_Local_Board_Temperature(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1746,7 +1746,7 @@ int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1787,7 +1787,7 @@ int SLX_III_class::Lens_Temperature_Sensor_1(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1811,7 +1811,7 @@ int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1852,7 +1852,7 @@ int SLX_III_class::Lens_Temperature_Sensor_2(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1876,7 +1876,7 @@ int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1917,7 +1917,7 @@ int SLX_III_class::Lens_Temperature_Sensor_3(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -1941,7 +1941,7 @@ int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -1982,7 +1982,7 @@ int SLX_III_class::Lens_Temperature_Sensor_4(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -2006,7 +2006,7 @@ int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -2047,7 +2047,7 @@ int SLX_III_class::Lens_Temperature_Sensor_5(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -2071,7 +2071,7 @@ int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -2112,7 +2112,7 @@ int SLX_III_class::Lens_Temperature_Sensor_6(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -2136,7 +2136,7 @@ int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -2177,7 +2177,7 @@ int SLX_III_class::Lens_Temperature_Sensor_7(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Temperature_Sensor_8(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Temperature_Sensor_8(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -2201,7 +2201,7 @@ int SLX_III_class::Lens_Temperature_Sensor_8(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -2245,7 +2245,7 @@ int SLX_III_class::Lens_Temperature_Sensor_8(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_1(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_1(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2269,7 +2269,7 @@ int SLX_III_class::Lens_Calibration_Temperature_1(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2311,7 +2311,7 @@ int SLX_III_class::Lens_Calibration_Temperature_1(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_2(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_2(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2335,7 +2335,7 @@ int SLX_III_class::Lens_Calibration_Temperature_2(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2377,7 +2377,7 @@ int SLX_III_class::Lens_Calibration_Temperature_2(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_3(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_3(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2401,7 +2401,7 @@ int SLX_III_class::Lens_Calibration_Temperature_3(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2443,7 +2443,7 @@ int SLX_III_class::Lens_Calibration_Temperature_3(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_4(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_4(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2467,7 +2467,7 @@ int SLX_III_class::Lens_Calibration_Temperature_4(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2509,7 +2509,7 @@ int SLX_III_class::Lens_Calibration_Temperature_4(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_5(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_5(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2533,7 +2533,7 @@ int SLX_III_class::Lens_Calibration_Temperature_5(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2575,7 +2575,7 @@ int SLX_III_class::Lens_Calibration_Temperature_5(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_6(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_6(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2599,7 +2599,7 @@ int SLX_III_class::Lens_Calibration_Temperature_6(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2641,7 +2641,7 @@ int SLX_III_class::Lens_Calibration_Temperature_6(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_7(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_7(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2665,7 +2665,7 @@ int SLX_III_class::Lens_Calibration_Temperature_7(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2707,7 +2707,7 @@ int SLX_III_class::Lens_Calibration_Temperature_7(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Calibration_Temperature_8(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Calibration_Temperature_8(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[12], buff_receive[12];
@@ -2731,7 +2731,7 @@ int SLX_III_class::Lens_Calibration_Temperature_8(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 12);
+        numRead = read(buff_receive, 12, timeOut);
 
         // Check do we receive 12 characters
         if (numRead == 12) {
@@ -2774,7 +2774,7 @@ int SLX_III_class::Lens_Calibration_Temperature_8(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Exercise_Lens_Period(DIRECTION dir, int *value)
+int SLX_III_class::Exercise_Lens_Period(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2798,7 +2798,7 @@ int SLX_III_class::Exercise_Lens_Period(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2831,7 +2831,7 @@ int SLX_III_class::Exercise_Lens_Period(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2863,7 +2863,7 @@ int SLX_III_class::Exercise_Lens_Period(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Lens_Exercise_Next(DIRECTION dir, int *value)
+int SLX_III_class::Lens_Exercise_Next(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -2887,7 +2887,7 @@ int SLX_III_class::Lens_Exercise_Next(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -2927,7 +2927,7 @@ int SLX_III_class::Lens_Exercise_Next(DIRECTION dir, int *value)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
 
-int SLX_III_class::Perform_Exercise_Mechanism_Function(DIRECTION dir)
+int SLX_III_class::Perform_Exercise_Mechanism_Function(DIRECTION dir, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[6], buff_receive[6];
@@ -2955,7 +2955,7 @@ int SLX_III_class::Perform_Exercise_Mechanism_Function(DIRECTION dir)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 6);
+        numRead = read(buff_receive, 6, timeOut);
 
         // Check do we receive 6 characters
         if (numRead == 6) {

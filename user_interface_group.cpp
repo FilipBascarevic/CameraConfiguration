@@ -22,7 +22,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
+int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -46,7 +46,7 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -84,7 +84,7 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -177,7 +177,7 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -224,7 +224,7 @@ int SLX_III_class::Configure_Baud_Rate(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
+int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -248,7 +248,7 @@ int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -281,7 +281,7 @@ int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -358,7 +358,7 @@ int SLX_III_class::Configure_Parity_and_Stop_Bits(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response

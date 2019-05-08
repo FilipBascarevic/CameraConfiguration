@@ -66,12 +66,13 @@
          *
         * @param buffer pointer to the buffer to be written to
         * @param buffLen the size of the buffer
+        * @param timeOut timeout in msec. Default not timeout
         * @param nullTerminate if set to true it will null terminate the string
         *
         * @return int the number of bytes read
         */
 
-        qint64 read(char *buffer, qint64 buffLen, bool nullTerminate = false);
+        qint64 read(char *buffer, qint64 buffLen,int timeOut = -1, bool nullTerminate = false);
 
         /** Flushes everything from the serial port's read buffer
         */

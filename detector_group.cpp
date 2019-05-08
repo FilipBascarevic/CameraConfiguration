@@ -28,7 +28,7 @@
      *              * 9 - Condor IV (DWB 640 x 512 @ 20um)
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Detector_Array_Type(DIRECTION dir, int *value)
+int SLX_III_class::Detector_Array_Type(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -51,7 +51,7 @@ int SLX_III_class::Detector_Array_Type(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -96,7 +96,7 @@ int SLX_III_class::Detector_Array_Type(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
+int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -120,7 +120,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -153,7 +153,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -202,7 +202,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -248,7 +248,7 @@ int SLX_III_class::Test_Pattern_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Test_Pattern_Type(DIRECTION dir, char *value)
+int SLX_III_class::Test_Pattern_Type(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -272,7 +272,7 @@ int SLX_III_class::Test_Pattern_Type(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -301,7 +301,7 @@ int SLX_III_class::Test_Pattern_Type(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -350,7 +350,7 @@ int SLX_III_class::Test_Pattern_Type(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
         // Check do we receive 7 characters
         if (numRead == 7) {
             // Check response
@@ -393,7 +393,7 @@ int SLX_III_class::Test_Pattern_Type(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Readout_Direction(DIRECTION dir, char *value)
+int SLX_III_class::Readout_Direction(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -417,7 +417,7 @@ int SLX_III_class::Readout_Direction(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -446,7 +446,7 @@ int SLX_III_class::Readout_Direction(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -479,7 +479,7 @@ int SLX_III_class::Readout_Direction(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Readout_Mode(DIRECTION dir, char *value)
+int SLX_III_class::Readout_Mode(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -503,7 +503,7 @@ int SLX_III_class::Readout_Mode(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -532,7 +532,7 @@ int SLX_III_class::Readout_Mode(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -569,7 +569,7 @@ int SLX_III_class::Readout_Mode(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Trigger_Method(DIRECTION dir, char *value)
+int SLX_III_class::Trigger_Method(DIRECTION dir, char *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -593,7 +593,7 @@ int SLX_III_class::Trigger_Method(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -622,7 +622,7 @@ int SLX_III_class::Trigger_Method(DIRECTION dir, char *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -653,7 +653,7 @@ int SLX_III_class::Trigger_Method(DIRECTION dir, char *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Frame_Rate(DIRECTION dir, int *value)
+int SLX_III_class::Frame_Rate(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -677,7 +677,7 @@ int SLX_III_class::Frame_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -710,7 +710,7 @@ int SLX_III_class::Frame_Rate(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -741,7 +741,7 @@ int SLX_III_class::Frame_Rate(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Frame_Period(DIRECTION dir, int *value)
+int SLX_III_class::Frame_Period(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[11], buff_receive[11];
@@ -765,7 +765,7 @@ int SLX_III_class::Frame_Period(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {
@@ -798,7 +798,7 @@ int SLX_III_class::Frame_Period(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 11);
+        numRead = read(buff_receive, 11, timeOut);
 
         // Check do we receive 11 characters
         if (numRead == 11) {

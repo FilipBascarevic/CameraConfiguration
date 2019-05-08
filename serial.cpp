@@ -78,7 +78,7 @@ qint64 Serial::write(const char *buffer, qint64 buffLen)
 
 }
 
-qint64 Serial::read(char *buff, qint64 buffLen, bool nullTerminate)
+qint64 Serial::read(char *buff, qint64 buffLen,int timeOut, bool nullTerminate)
 {
     if (nullTerminate) {
         buffLen--;
@@ -86,11 +86,12 @@ qint64 Serial::read(char *buff, qint64 buffLen, bool nullTerminate)
 
     qint64 numRead = 0;
 
-    if (serialPort.waitForReadyRead(-1)){
+    if (serialPort.waitForReadyRead(timeOut)){
         numRead = serialPort.read(buff, buffLen);
     }
     else {
-        standardOutput << QObject::tr("readyRead() signal hasn't been emitted.") << endl;
+        standardOutput << QObject::tr("Wait read response timeout. ReadyRead() signal hasn't been emitted.") << endl;
+        numRead = 0;
     }
 
 

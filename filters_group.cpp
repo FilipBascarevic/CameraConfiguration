@@ -16,7 +16,7 @@
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Spatial_Filter_Sharpening_Level(DIRECTION dir, int *value)
+int SLX_III_class::Spatial_Filter_Sharpening_Level(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -40,7 +40,7 @@ int SLX_III_class::Spatial_Filter_Sharpening_Level(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -73,7 +73,7 @@ int SLX_III_class::Spatial_Filter_Sharpening_Level(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -108,7 +108,7 @@ int SLX_III_class::Spatial_Filter_Sharpening_Level(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Stabilisation_Enable(DIRECTION dir, int *value)
+int SLX_III_class::Image_Stabilisation_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -132,7 +132,7 @@ int SLX_III_class::Image_Stabilisation_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -165,7 +165,7 @@ int SLX_III_class::Image_Stabilisation_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -196,7 +196,7 @@ int SLX_III_class::Image_Stabilisation_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Stabilisation_Image_Trim(DIRECTION dir, int *value)
+int SLX_III_class::Image_Stabilisation_Image_Trim(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -220,7 +220,7 @@ int SLX_III_class::Image_Stabilisation_Image_Trim(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -253,7 +253,7 @@ int SLX_III_class::Image_Stabilisation_Image_Trim(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -302,7 +302,7 @@ int SLX_III_class::Image_Stabilisation_Image_Trim(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
@@ -343,7 +343,7 @@ int SLX_III_class::Image_Stabilisation_Image_Trim(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value)
+int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -367,7 +367,7 @@ int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -400,7 +400,7 @@ int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -449,7 +449,7 @@ int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
         // Check do we receive 8 characters
         if (numRead == 8) {
             // Check response
@@ -490,7 +490,7 @@ int SLX_III_class::Image_Stabilisation_Damping(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value)
+int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[9], buff_receive[9];
@@ -515,7 +515,7 @@ int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -548,7 +548,7 @@ int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
 
         // Check do we receive 9 characters
         if (numRead == 9) {
@@ -598,7 +598,7 @@ int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 9);
+        numRead = read(buff_receive, 9, timeOut);
         // Check do we receive 9 characters
         if (numRead == 9) {
             // Check response
@@ -639,7 +639,7 @@ int SLX_III_class::Image_Stabilisation_Threshold(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *value)
+int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -664,7 +664,7 @@ int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -704,7 +704,7 @@ int SLX_III_class::Image_Stabilisation_Current_Position_X(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Image_Stabilisation_Current_Position_Y(DIRECTION dir, int *value)
+int SLX_III_class::Image_Stabilisation_Current_Position_Y(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[10], buff_receive[10];
@@ -729,7 +729,7 @@ int SLX_III_class::Image_Stabilisation_Current_Position_Y(DIRECTION dir, int *va
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 10);
+        numRead = read(buff_receive, 10, timeOut);
 
         // Check do we receive 10 characters
         if (numRead == 10) {
@@ -773,7 +773,7 @@ int SLX_III_class::Image_Stabilisation_Current_Position_Y(DIRECTION dir, int *va
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value)
+int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[7], buff_receive[7];
@@ -797,7 +797,7 @@ int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -830,7 +830,7 @@ int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 7);
+        numRead = read(buff_receive, 7, timeOut);
 
         // Check do we receive 7 characters
         if (numRead == 7) {
@@ -862,7 +862,7 @@ int SLX_III_class::Turbulence_Mitigation_Enable(DIRECTION dir, int *value)
      *
      * @resuilt is 0 if action is successful, otherwise is faliure
 */
-int SLX_III_class::Turbulence_Mitigation_Level(DIRECTION dir, int *value)
+int SLX_III_class::Turbulence_Mitigation_Level(DIRECTION dir, int *value, int timeOut)
 {
     qint64 numRead, numWrite;
     char buff_send[8], buff_receive[8];
@@ -886,7 +886,7 @@ int SLX_III_class::Turbulence_Mitigation_Level(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
@@ -919,7 +919,7 @@ int SLX_III_class::Turbulence_Mitigation_Level(DIRECTION dir, int *value)
             return -1;
         }
         // Wait response
-        numRead = read(buff_receive, 8);
+        numRead = read(buff_receive, 8, timeOut);
 
         // Check do we receive 8 characters
         if (numRead == 8) {
